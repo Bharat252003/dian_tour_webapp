@@ -1,0 +1,135 @@
+{% extedns "base"html" %}
+
+{% block title %}{% endblock title %}
+{% block link %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'HomeMaidApp/css/babysitter.css' %}">
+<style>
+    *body{
+        overflow: hidden;
+    }
+    header {
+        text-align: center;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
+</style>
+</style>
+{% endblock link %}
+{% block body %}
+
+
+<!--page 3-->
+<section class="page3">
+    <div class="container">
+        <header>Booking Details</header>
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">Services</div>
+                <div class="col-md-4 themed-grid-col text-end" id="service"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">includes</div>
+                <div class="col-md-4 themed-grid-col text-end" id="include"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">Gender</div>
+                <div class="col-md-4 themed-grid-col text-end" id="Gender"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">Start Date</div>
+                <div class="col-md-4 themed-grid-col text-end" id="s_date"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">End Date</div>
+                <div class="col-md-4 themed-grid-col text-end" id="e_date"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">Work shift</div>
+                <div class="col-md-4 themed-grid-col text-end" id="shift"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">Work Details</div>
+                <div class="col-md-4 themed-grid-col text-end" id="w_detail"></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-8 themed-grid-col">Total price</div>
+                <div class="col-md-4 themed-grid-col text-end" id="total"></div>
+            </div>
+        </div>
+        <div class="btn-next">
+            <form action="success" method="POST">
+                <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_vX6DvyDQjO0t88"
+                    data-amount="{{payment.amount}}" data-currency="INR" data-order_id="{{payment.id}}"
+                    data-buttontext="Book Now" data-button_theme = "#f381e0" data-name="Home maid" data-description="Test transaction"
+                    data-image="https://example.com/your_logo.jpg" data-prefill.name="Tasmi jasani"
+                    data-prefill.email="tasmijasani@gmail.com" data-prefill.contact="9016175048"
+                    data-theme.color="#F37254"></script>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+    $("#service").html(sessionStorage.getItem('service'));
+    $("#include").html(sessionStorage.getItem('include'));
+    $("#Gender").html(sessionStorage.getItem('Gender'));
+    $("#s_date").html(sessionStorage.getItem('s_date'));
+    $("#e_date").html(sessionStorage.getItem('e_date'));
+    $("#shift").html(sessionStorage.getItem('shift'));
+    $("#w_detail").html(sessionStorage.getItem('w_detail'));
+    $("#total").html(sessionStorage.getItem('total'));
+</script>
+{% endblock script %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>Your Booking Details</header>
+    
+    {% if payment %}
+    <div class="text-center mx-auo">
+        <form action="success" method="POST">
+            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_vX6DvyDQjO0t88"
+                data-amount="{{payment.amount}}" data-currency="INR" data-order_id="{{payment.id}}"
+                data-buttontext="pay with razorpay" data-name="Home maid" data-description="Test transaction"
+                data-image="https://example.com/your_logo.jpg" data-prefill.name="Tasmi jasani"
+                data-prefill.email="tasmijasani@gmail.com" data-prefill.contact="9016175048"
+                data-theme.color="#F37254" dats-theme.height="50%"></script>
+            <input type="hidden" custom="Hidden Element" name="hidden">
+        </form>
+    </div>
+    {% endif %}
+</body>
+
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

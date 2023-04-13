@@ -1,0 +1,215 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+{% comment %} {% for pkg in dest %} {% endcomment %}
+<div class="home-1">
+    <div class="background_image" style="background:linear-gradient(45deg, black, transparent),url({% static 'images/goa.jpg' %});background-size:cover;"></div>
+</div>
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5"> 
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="img-fluid position-absolute w-100 h-100" src="{{dest.pkg_pic.url}}"  alt="destination pic" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="d-flex my-2">
+                    {% for pt in ptype %}
+                    <li style="background: #ffa5004a;padding: 5px 10px;border-radius: 50px;" class="mx-2">{{ pt }}</li>
+                    {% endfor %}
+                </div>
+                <h1 class=" bg-white text-start text-primary pe-3 text-decoration-underline">{{dest.pkg_title}}</h1>
+                <h3 class="mb-4" ><span class="text-primary">From </span>{{dest.pkg_from}}<span class="text-primary"> To</span> {{dest.pkg_to}}</h3>
+                
+                <div class=" mb-2" style="display: flex;flex-direction: column;">
+                    <div class="">
+                        <p class="mb-2 fs-3" style="font-size: 27px;font-weight: 600;"><i class="fa-sharp fa-solid fa-sun text-primary me-2"> </i> {{dest.pkg_days}} days &nbsp;&nbsp;&nbsp; 
+                        {% comment %} </p><p class="mb-0 fs-2"> {% endcomment %}
+                        <i class="fa-solid fa-moon text-primary me-2"></i> {{dest.pkg_night}} nights</p>
+                    </div>
+                    
+                    <div class="">
+                        <p class="mb-2 fs-3 fw-bold" style="font-size: 27px;font-weight: 600;"><i class="fa-solid fa-calendar-days text-primary me-2"></i>Departure Date:<i class=" text-primary me-2">
+                            {{dest.dep_date}}
+                        </i></p>
+                    </div>
+                    <div class="">
+                        <p class="fs-2 fw-bold" style="font-size: 30px;font-weight: 700;><span class="fs-1">Rs.</span><i class="text-primary ">{{dest.pkg_price}} </i> Only.</p>
+                    </div>
+                    
+                </div>
+                <button class="btn-book btn btn-block" style="border:3px solid orange;color:orange;font-size:20px;font-weight:700;" type="submit"
+                                            onclick="window.location.href='/booking/{{dest.id}}'">Book
+                                            Now</button>
+                {% comment %} <a class="btn btn-primary fs-3 py-3 px-5 mt-2" href={% url 'booking' dest.id %}>Book Now</a> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--days start-->
+
+<div class="days_container" style="padding:1rem;max-width:70%;padding-left:10%">
+    <div class="">
+        {% comment %} <div class="d-flex mb-4"> 
+            <div class="pt-3 px-4 fs-3 d-flex flex-column align-items-center bg-primary ">
+                <!-- <i class="fa-solid fa-plane-departure fs-2 text-primary"></i> -->
+                <p class="fw-bold" style="color: white
+                ;">Package<br>Includes</p>
+            </div>
+            <div class="p-4 fs-4 d-flex flex-column align-items-center" style="border-right:3px solid orange;">
+                <i class="fa-solid fa-plane-departure fs-2 text-primary"></i>
+                <p>transportation</p>
+            </div>
+            <div class="p-4 fs-4 center d-flex flex-column align-items-center" style="border-right:3px solid orange;">
+                <i class="fa-solid fa-hotel fs-2 text-primary"></i>
+                <p>accomodation</p>
+            </div>
+            <div class="d-flex flex-column align-items-center p-4 fs-4 justify-center" style="border-right:3px solid orange;">
+                <i class="fa-solid fa-utensils text-primary fs-2"></i>
+                <p>Meals</p>
+            </div>
+            <div class="d-flex flex-column align-items-center p-4 fs-4 justify-center" style="border-right:5px solid orange;">
+                <i class="fa-solid fa-circle-plus text-primary fs-2"></i>
+                <p>more ...</p>
+            </div>
+        </div>{% endcomment %}
+    </div>
+    <h2 style="border-left:10px solid orange;margin-bottom: 10px;margin-top: 10px;" class="px-1">  package Summary:</h2>
+<hr class="text-primary fs-bold" style="height: 5px;">
+
+    <p class="mb-4 fs-5">{{dest.pkg_dec}}</p>
+<h2 style="border-left:10px solid orange;margin-bottom: 10px;" class="px-1 mb-3"> Day wise Itenerary</h2>
+<hr class="text-primary fs-bold" style="height: 5px;">
+<div class="single_destination">
+    <h4><span style="border-right: 5px solid;margin-right: 5px;" class='text-primary'>Day 1 </span>{{dest.day1_title}}</h4>
+    <P>{{dest.day1_desc}}</P>
+</div>
+{% comment %} {% load range_filter %}
+{% for i in 1|range_filter:dest.pkg_days %}
+{% if dest.day{{i}}_title %}
+<div class="single_destination">
+    <h4>Day {{i}} {{dest.day{{i}}_title}}</h4>
+    <P>{{dest.day{{i}}_title}}</P>
+</div>
+{%endif%}
+{% endfor %} {% endcomment %}
+{% if dest.day2_title %}
+<div class="single_destination">
+    <h4><span style="border-right: 5px solid;margin-right: 5px;" class='text-primary'>Day 2 </span>{{dest.day2_title}}</h4>
+    <P>{{dest.day2_desc}}</P>
+</div>
+{%endif%}
+
+{% if dest.day3_title %}
+<div class="single_destination">
+   <h4><span style="border-right: 5px solid;margin-right: 5px;" class='text-primary'>Day 3 </span>{{dest.day3_title}}</h4>
+    <P>{{dest.day3_desc}}</P>
+</div>
+{%endif%}
+
+{% if dest.day4_title %}
+<div class="single_destination">
+    <h4><span style="border-right: 5px solid;margin-right: 5px;" class='text-primary'>Day 4 </span>{{dest.day4_title}}</h4>
+    <P>{{dest.day4_desc}}</P>
+</div>
+{%endif%}
+
+{% if dest.day5_title %}
+<div class="single_destination">
+    
+    <h4><span style="border-right: 5px solid;margin-right: 5px;" class='text-primary'>Day 5 </span>{{dest.day5_title}}</h4>
+    <P>{{dest.day5_desc}}</P>
+</div>
+{%endif%}
+
+{% if dest.day_title3 %}
+<div class="single_destination">
+    <h4>day_title-03</h4>
+    <P>{{dest.day_title3}}</P>
+</div>
+{%endif%}
+{% if dest.day_title4 %}
+<div class="single_destination">
+    <h4>day_title-04</h4>
+    <P>{{dest.day_title4}}</P>
+</div>
+{%endif%}
+{% if dest.day_title5 %}
+<div class="single_destination">
+    <h4>day_title-05</h4>
+    <P>{{dest.day_title5}}</P>
+</div>
+{%endif%}
+{% if dest.day_title6 %}
+<div class="single_destination">
+    <h4>day_title-06</h4>
+    <P>{{dest.day_title6}}</P>
+</div>
+{%endif%}
+{% if dest.day_title7 %}
+<div class="single_destination">
+    <h4>day_title-07</h4>
+    <P>{{dest.day_title7}}</P>
+</div>
+{%endif%}
+{% if dest.day_title8 %}
+<div class="single_destination">
+    <h4>day_title-08</h4>
+    <P>{{dest.day_title8}}</P>
+</div>
+{%endif%}
+{% if dest.day_title9 %}
+<div class="single_destination">
+    <h4>day_title-09</h4>
+    <P>{{dest.day_title9}}</P>
+</div>
+{%endif%}
+{% if dest.day_title10 %}
+<div class="single_destination">
+    <h4>day_title-10</h4>
+    <P>{{dest.day_title10}}</P>
+</div>
+{%endif%}
+{% if dest.day_title11 %}
+<div class="single_destination">
+    <h4>day_title-11</h4>
+    <P>{{dest.day_title11}}</P>
+</div>
+{%endif%}
+{% if dest.day_title12 %}
+<div class="single_destination">
+    <h4>day_title-12</h4>
+    <P>{{dest.day_title12}}</P>
+</div>
+{%endif%}
+{% if dest.day_title13 %}
+<div class="single_destination">
+    <h4>day_title-13</h4>
+    <P>{{dest.day_title13}}</P>
+</div>
+{%endif%}
+{% if dest.day_title14 %}
+<div class="single_destination">
+    <h4>day_title-14</h4>
+    <P>{{dest.day_title14}}</P>
+</div>
+{%endif%}
+{% if dest.day_title15 %}
+<div class="single_destination">
+    <h4>day_title-15</h4>
+    <P>{{dest.day_title15}}</P>
+</div>
+{%endif%}
+{% if dest.day_title16 %}
+<div class="single_destination">
+    <h4>day_title-16</h4>
+    <P>{{dest.day_title16}}</P>
+</div>
+{%endif%}
+</div>
+<!-- days end -->
+
+{% comment %} {% endfor %} {% endcomment %}
+{% endblock content %}

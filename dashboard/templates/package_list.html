@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="container bg-white rounded shadow p-2" style="min-height: 300px;border:3px solid orange;border: 3px solid #ffba3a;">
+        <div class="heading d-flex p-1 px-2 text-primary justify-content-between" style="background-color: #ffeecf;;">
+            <h2>manage Packages</h2>
+            <div class="d-flex">
+                <form class="d-flex px-2" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary text-primary" style="border-color:orange;"type="submit">Search</button>
+                </form>
+                <a href={% url 'addpkg' %} class="px-2" style="font-size: 2rem;">
+                    <i class="fa-solid fa-circle-plus text-primary"></i>
+                </a>
+            </div>
+        </div>
+        <div class="list-container p-2" style="height: 100%;">
+            <table class="table">
+                <thead class="table_dark ">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for pkg in packages %}
+                    <tr>
+                        <th scope="row">{{pkg.id}}</th>
+                        <td>{{pkg.pkg_title}}</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td class="text-success"><i class="fa-solid fa-pen-to-square"></i></td>
+                        <td class="text-danger"><a href={% url 'delete_package' pkg.id %}><i class="fa-solid fa-trash text-danger"></i></a></td>
+                        
+                    </tr>
+                    {% empty %}
+                    <h2>no packages to display</h2>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+{% endblock content %}

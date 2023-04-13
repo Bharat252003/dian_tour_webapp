@@ -1,0 +1,480 @@
+{% extends 'main.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+{% block content %}
+		<!-- Menu -->
+
+		<div class="menu">
+			<div class="menu_header d-flex flex-row align-items-center justify-content-start">
+				<div class="menu_logo">
+					<a href="/">
+						<svg width="47" height="118" viewBox="0 0 47 118" fill="none" xmlns="http://www.w3.org/2000/svg" >
+							<path d="M10.0846 87.4361L10.0709 87.4464L10.0578 87.4575C9.55404 87.8884 8.91292 88.1252 8.25 88.1252C7.58708 88.1252 6.94596 87.8884 6.44219 87.4575L6.43924 87.455C5.91739 87.0027 -0.0638466 81.8194 -5.9213 74.5545C-11.8199 67.2386 -17.5 57.9235 -17.5 49.25C-17.5 42.4207 -14.7871 35.8711 -9.958 31.042C-5.12894 26.2129 1.42068 23.5 8.25 23.5C15.0793 23.5 21.6289 26.2129 26.458 31.042C31.2871 35.8711 34 42.4207 34 49.25C34 57.9245 28.3597 67.2402 22.4823 74.5552C16.6189 81.8528 10.6196 87.0388 10.0846 87.4361ZM7.90775 81.2786L8.24914 81.5991L8.59134 81.2794C12.103 77.9986 17.0498 72.7969 21.123 67.0317C25.1817 61.287 28.4375 54.8941 28.4375 49.25C28.4375 43.8959 26.3106 38.7612 22.5247 34.9753C18.7388 31.1894 13.6041 29.0625 8.25 29.0625C2.89594 29.0625 -2.23883 31.1894 -6.02472 34.9753C-9.81061 38.7612 -11.9375 43.8959 -11.9375 49.25C-11.9375 54.8942 -8.6816 61.279 -4.62291 67.0195C-0.549698 72.7806 4.39693 77.982 7.90775 81.2786ZM1.23593 38.7527C3.3121 37.3654 5.75301 36.625 8.25 36.625C11.5984 36.625 14.8096 37.9551 17.1772 40.3228C19.5449 42.6904 20.875 45.9016 20.875 49.25C20.875 51.747 20.1346 54.1879 18.7473 56.2641C17.3601 58.3402 15.3883 59.9584 13.0814 60.914C10.7745 61.8695 8.23599 62.1196 5.78699 61.6324C3.33797 61.1453 1.08842 59.9429 -0.677223 58.1772C-2.44286 56.4116 -3.64528 54.162 -4.13242 51.713C-4.61955 49.264 -4.36954 46.7255 -3.41398 44.4186C-2.45842 42.1117 -0.840244 40.1399 1.23593 38.7527ZM4.32629 55.1223C5.48771 55.8983 6.85317 56.3125 8.25 56.3125C10.1231 56.3125 11.9195 55.5684 13.2439 54.2439C14.5684 52.9195 15.3125 51.1231 15.3125 49.25C15.3125 47.8532 14.8983 46.4877 14.1223 45.3263C13.3462 44.1649 12.2432 43.2596 10.9527 42.7251C9.6622 42.1906 8.24217 42.0507 6.87218 42.3232C5.50218 42.5957 4.24377 43.2684 3.25606 44.2561C2.26835 45.2438 1.59571 46.5022 1.3232 47.8722C1.0507 49.2422 1.19056 50.6622 1.7251 51.9527C2.25964 53.2432 3.16486 54.3462 4.32629 55.1223Z" fill="white" stroke="white"/>
+							<circle cx="8.5" cy="49.5" r="9.5" fill="#FF891E"/>
+							<line x1="2.5" y1="29" x2="2.5" y2="82" stroke="black" stroke-width="5"/>
+							<path d="M30.75 49.5C30.75 61.8776 21.1486 71.75 9.5 71.75C-2.1486 71.75 -11.75 61.8776 -11.75 49.5C-11.75 37.1224 -2.1486 27.25 9.5 27.25C21.1486 27.25 30.75 37.1224 30.75 49.5Z" stroke="white" stroke-width="4.5"/>
+							</svg> Dian Tours
+					</a>
+				</div>
+				<div class="menu_close_container ml-auto">
+					<div class="menu_close">
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<div class="menu_content">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="about">About Us</a></li>
+					<li><a href="Packages">Packages</a></li>
+					<li><a href="contact">Contact</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="accounts/logout">Logout</a></li>
+					{% else %}
+					<li><a href="accounts/register">Register</a></li>
+					<li><a href="accounts/login">Login</a></li>
+					{% endif %}
+				</ul>
+			</div>
+			<div class="menu_social">
+				<ul class="d-flex flex-row align-items-start justify-content-start">
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Home -->
+
+		<div class="home">
+
+			<!-- Home Slider -->
+			<div class="home_slider_container">
+				<div class="owl-carousel owl-theme home_slider">
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(static/images/bg1.jpg)"></div>
+						<div class="home_slider_content_container">
+							<div class="container">
+								<div class="row">
+									<div class="col">
+										<div class="home_slider_content">
+											<div class="home_title">
+												<p class="text-light fs-3" style="font-size: 5rem;font-family: 'Oswald';opacity:0.8;font-weight:700">Enjoy Your Holidays With DIAN</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% comment %} <!-- Slide 2 -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(static/images/destination_2.jpg)">
+						</div>
+						<div class="home_slider_content_container">
+							<div class="container">
+								<div class="row">
+									<div class="col">
+										<div class="home_slider_content">
+											<div class="home_title">
+												<h2>Let us take you away</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Slide 3-->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(static/images/destination_3.jpg)">
+						</div>
+						<div class="home_slider_content_container">
+							<div class="container">
+								<div class="row">
+									<div class="col">
+										<div class="home_slider_content">
+											<div class="home_title">
+												<h2>Let us take you away</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> {% endcomment %}
+
+				</div>
+
+				<div class="home_page_nav">
+					<ul class="d-flex flex-column align-items-end justify-content-end">
+						<li><a href="#" data-scroll-to="#destinations">Offers<span>{{destsWithOffer}}</span></a></li>
+						<li><a href="#" data-scroll-to="#testimonials">Testimonials<span>{{testimonialCount}}</span></a></li>
+						<li><a href="#" data-scroll-to="#news">Latest<span>03</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Search -->
+
+		<div class="home_search">
+			<div class="container">
+				
+				<div class="row">
+					<div class="col">
+						<div class="home_search_container">
+							<div class="home_search_title">Search for your trip</div>
+							<div class="home_search_content">
+								<form action="search" class="home_search_form" id="home_search_form">
+									<div
+										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+										<input type="text" name="q" class="search_input search_input_1" placeholder="Destination"
+											required="required">
+										<input type="text" name="min_price" class="search_input search_input_3" placeholder="min price">
+										<input type="text" name="max_price" class="search_input search_input_4" placeholder="max price">
+										<button type="submit" class="home_search_button">search</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Intro -->
+
+		<div class="intro">
+			<div class="intro_background" style="background-image:url(static/images/intro.png)"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="intro_container">
+							<div class="row">
+
+								<!-- Intro Item -->
+								<div class="col-lg-4 intro_col">
+									<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+										<div class="intro_icon"><img src="{% static 'images/beach.svg' %}" alt=""></div>
+										<div class="intro_content">
+											<div class="intro_title">Top Destinations</div>
+											<div class="intro_subtitle">
+												<p>wide range of national and international tours.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Intro Item -->
+								<div class="col-lg-4 intro_col">
+									<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+										<div class="intro_icon"><img src="{% static 'images/wallet.svg' %}" alt="">
+										</div>
+										<div class="intro_content">
+											<div class="intro_title ">The Best Prices</div>
+											<div class="intro_subtitle">
+												<p>package in your budget friendly price.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Intro Item -->
+								<div class="col-lg-4 intro_col">
+									<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+										<div class="intro_icon"><img src="{% static 'images/suitcase.svg' %}" alt="">
+										</div>
+										<div class="intro_content">
+											<div class="intro_title">Amazing Packages</div>
+											<div class="intro_subtitle">
+												<p>fully facilitated and joyful tour packages .</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Destinations -->
+		<div class="destinations" id="destinations">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_subtitle">simply amazing places</div>
+						<div class="section_title">
+							<h2>Popular International Destinations </h2>
+						</div>
+					</div>
+				</div>
+				<div class="row destinations_row">
+					<div class="col">
+						<div class="destinations_container item_grid">
+
+							{% for des in dests %}
+
+							{% if des.International %}
+							<!-- Destination -->
+							<div id="id01" class="destination item">
+								<div class="destination_image">
+									<a href="destination_details/{{des.id}}"><img src="{{des.pkg_pic.url}}" alt="image" style="height: 300px;
+										width: 100%;
+										object-fit: cover;"></a>
+									{% if des.Domestic %}
+									<div class="spec_offer text-center"><a href="destination_details/{{des.id}}">Special
+										Offer</a></div>
+									{% endif %}
+								</div>
+								<div class="destination_content">
+									<div class="destination_title"><a href="destination_details/{{des.id}}">{{des.pkg_title}}
+										<h5>{{des.pkg_days}}D/{{des.pkg_night|add:"-1"}}N</h5>
+									</a></div>
+									<div class="destination_subtitle">
+										<a href="destination_details/{{des.id}}">
+											{% if des.pkg_dec|length > 95 %}
+											<p>{{des.pkg_dec|slice:95}}...</p>
+											{% else %}
+											<p>{{des.pkg_dec}}</p>
+											{% endif %}
+										</a>
+									</div>
+									<a href="destination_details/{{des.id}}">
+										<div class="destination_price">Rs. {{des.pkg_price}}</div>
+									</a>
+								</div>
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="destinations" id="destinations">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_subtitle">simply amazing places</div>
+						<div class="section_title">
+							<h2>Popular Domestic Destination</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row destinations_row">
+					<div class="col">
+						<div class="destinations_container item_grid">
+
+							{% for des in dests %}
+							{% if des.Domestic %}
+		<!-- Domestic Destination -->
+		<div id="id01" class="destination item">
+			<div class="destination_image">
+				<a href="destination_details/{{des.id}}"><img src="{{des.pkg_pic.url}}" alt="image" style="height: 300px;
+					width: 100%;
+					object-fit: cover;"></a>
+				{% if des.Domestic %}
+				<div class="spec_offer text-center"><a href="destination_details/{{des.id}}">Special
+					Offer</a></div>
+				{% endif %}
+			</div>
+			<div class="destination_content">
+				<div class="destination_title"><a href="destination_details/{{des.id}}">{{des.pkg_title}}
+					<h5>{{des.pkg_days}}D/{{des.pkg_night|add:"-1"}}N</h5>
+				</a></div>
+				<div class="destination_subtitle">
+					<a href="destination_details/{{des.id}}">
+						{% if des.pkg_dec|length > 95 %}
+						<p>{{des.pkg_dec|slice:95}}...</p>
+						{% else %}
+						<p>{{des.pkg_dec}}</p>
+						{% endif %}
+					</a>
+				</div>
+				<a href="destination_details/{{des.id}}">
+					<div class="destination_price">Rs. {{des.pkg_price}}</div>
+				</a>
+			</div>
+		</div>
+		{% endif %}
+
+							
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+					
+		
+		<!-- Testimonials -->
+
+		<div class="testimonials" id="testimonials">
+			<div class="parallax_background parallax-window" data-parallax="scroll"
+				data-image-src="{% static 'images/testimonials.jpg' %}" data-speed="0.8"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_subtitle">simply amazing places</div>
+						<div class="section_title">
+							<h2>Testimonials</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row testimonials_row">
+					<div class="col">
+
+						<!-- Testimonials Slider -->
+						<div class="testimonials_slider_container">
+							<div class="owl-carousel owl-theme testimonials_slider">
+
+								{% for t in testimonials %}
+								<!-- Slide -->
+								<div class="owl-item text-center">
+									<div class="testimonial">{{t.message}}
+									</div>
+									<div class="testimonial_author">
+										<div
+											class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+											<h4>~{{t.yourName}}</h4>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="test_nav">
+				<ul class="d-flex flex-column align-items-end justify-content-end">
+					<li><a href="#">City Breaks Clients<span>01</span></a></li>
+					<li><a href="#">Cruises Clients<span>02</span></a></li>
+					<li><a href="#">All Inclusive Clients<span>03</span></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- News -->
+
+		<div class="news" id="news">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-8">
+						<div class="news_container">
+
+							<!-- News Post -->
+							<div
+								class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+								<div class="news_post_image"><img src="{% static 'images/news_1.jpg' %}" alt=""></div>
+								<div class="news_post_content">
+									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+										<div>20</div>
+										<div>December</div>
+									</div>
+									<div class="news_post_title"><a href="#">Maldives</a></div>
+									<div class="news_post_category">
+										<ul>
+											<li><a href="#">lifestyle & travel</a></li>
+										</ul>
+									</div>
+									<div class="news_post_text">
+										<p>It is the world’s greatest island destination, way ahead of previous
+											favourites such as French Polynesia and the Caribbean.
+											It is a paradise for snorkelling and diving. It has some of the finest
+											resort hotels on earth, and such is the trendiness of the
+											destination that every luxury chain in the world wants to be in the
+											Maldives,
+											so newer and better resorts open each season.</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- News Post -->
+							<div
+								class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+								<div class="news_post_image"><img src="static/images/news_2.jpg" alt=""></div>
+								<div class="news_post_content">
+									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+										<div>01</div>
+										<div>june</div>
+									</div>
+									<div class="news_post_title"><a href="#">New York</a></div>
+									<div class="news_post_category">
+										<ul>
+											<li><a href="#">lifestyle & travel</a></li>
+										</ul>
+									</div>
+									<div class="news_post_text">
+										<p>New York is extremely easy to navigate.This is where you will find most of
+											the city’s top attractions, such as the Empire State Building, Central Park,
+											Times Square, the Chrysler Building and more. And ferries to the Statue of
+											Liberty on Liberty Island depart from Lower Manhattan.
+											And for the best views of Manhattan go to the Top of the Rock at the
+											Rockefeller Centre.</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- News Post -->
+							<div
+								class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+								<div class="news_post_image"><img src="{% static 'images/news_3.jpg' %}" alt=""></div>
+								<div class="news_post_content">
+									<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+										<div>15</div>
+										<div>August</div>
+									</div>
+									<div class="news_post_title"><a href="#">Switzerland</a></div>
+									<div class="news_post_category">
+										<ul>
+											<li><a href="#">lifestyle & travel</a></li>
+										</ul>
+									</div>
+									<div class="news_post_text">
+										<p>It is thriving more than ever thanks to its temperate climate, stunning
+											locales, good food and progressive economy.
+											Also, includes must-see spots like the Alps and Rhone, delicious cheeses and
+											chocolates and so much more.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- News Sidebar -->
+					<div class="col-xl-4">
+						<div class="travello">
+							<div class="background_image" style="background-image:url(static/images/travello.jpg)">
+							</div>
+							<div class="travello_content">
+								<div class="travello_content_inner">
+									<div></div>
+									<div></div>
+								</div>
+							</div>
+							<div class="travello_container">
+								<a href="#">
+									<div class="d-flex flex-column align-items-center justify-content-end">
+										<span class="travello_title">Get a 20% Discount</span>
+										<span class="travello_subtitle">Buy Your Vacation Online Now</span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+{% endblock content %}

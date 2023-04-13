@@ -1,0 +1,194 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/about.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css'%}">
+{% endblock styles %}
+{% block content %}
+<div class="home-1">
+    <div class="background_image" style="background-image:linear-gradient(#00000094, #0000001c, transparent),url({% static 'images/bg3.jpg' %});background-position: center;">
+        <div class="home_slider_content_container" style="top:27%;;">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_slider_content" style="top:50%;;">
+                            <div class="home_title">
+                                <p class="text-light text-decoration-undrline" style="font-size: 5rem;font-family: 'Oswald';opacity:1;font-weight:700;background-color: #0000002b;">About Us</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+    <div class="d-flex justify-content-between" style="align-items: center;">
+        <img class="d-flex px-2" src={% static 'images/i_love_dian.jpg' %} alt="about" style="max-height:410px; margin-left:1rem;">
+        <div class="container-fluid pb-2">
+            {% comment %} <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="container"> {% endcomment %}
+                    {% comment %} <div class="text-center">
+                        <h6 class="section-title bg-white text-center text-primary px-3">About Us</h6>
+                        <h1 class="mb-5">Why Choose Us?</h1>
+                    </div>  {% endcomment %}
+                    {% comment %} <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6> {% endcomment %}
+                    <h2 class="mb-4">Know About <span class="text-primary">DIAN Tours</span></h2>
+            
+            <div class="container pb-2">
+                <div class="row" style="max-width:550px;">
+                    <div class="row-md-4 my-2">
+                        <div class="d-flex mb-4 mb-lg-0">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                                <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                            </div>
+                            <div class="d-flex flex-column px-2  justify-content-center">
+                                <h5 class="">Competitive Pricing</h5>
+                                <p class="m-0">resonable and budget friendly prices of packages</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-md-4 my-2">
+                        <div class="d-flex mb-4 mb-lg-0">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                                <i class="fa fa-2x fa-award text-white"></i>
+                            </div>
+                            <div class="d-flex flex-column px-2  justify-content-center">
+                                <h5 class="">Best Services</h5>
+                                <p class="m-0">we provide best tour services and management.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-md-4 py-2">
+                        <div class="d-flex mb-4 mb-lg-0">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 145px;">
+                                <i class="fa fa-2x fa-globe text-white"></i>
+                            </div>
+                            <div class="d-flex flex-column px-2  justify-content-center">
+                                <h5 class="">Worldwide Coverage</h5>
+                                <p class="m-0">we provide world wide tour package services and our tour operators are in different countries.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Feature End -->
+    
+    <div class="p-2 d-flex justify-content-center fs-4 flex-column px-3" style="
+    justify-items: center;
+    align-items: center;
+    width: 100vw;
+    flex-wrap: wrap;
+">
+        <h2 class="p-2 text-primary" style="
+        width: 80vw;
+    ">Know More About Us</h2>
+        <ul  Style="width:80vw;font-size:25px;">
+            <li class="my-3 " style="
+            list-style: disc;
+        ">
+                Dian Tours is one of the esteemed Tours and Travel service providers located in Ahmedabad, Gujarat, India. We offer a complete solution of tour and travel services that include Tour Operators, trip planning, tour package booking and tour consaltancy. We take every single step for offering a safer and more comfortable journey to our customers.
+            </li>
+            <li class="my-3" style="
+            list-style: disc;
+        ">
+                We are ready to serve our clients with the best packages according to their personalized travel needs. Moreover, we also keep in mind the location, time, and budget. Our team designed tour packages for customers under the guidance of field experts. We give a Customized Travel package so that our clients can plan according to their choice, their needs, and their budget. We aim to please our customers through our services so that they don't feel like they are bound or trapped by packages.
+            </li>
+            <li class="my-3" style="
+            list-style: disc;
+        ">
+                Dian Tours also provides all solutions linked to documents and payments before or during the tour. Our tour guides give all essential support to the customer during the complete journey. We inspect all personal likes and dislikes of the clients for offering a comfortable and secure journey.
+            </li>
+            <li class="my-3" style="
+            list-style: disc;
+        ">
+                Our company emerged as one of the most trusted Tour and Travels stands in Ahmedabad with thousands of satisfied customers. We have a team of professionals who have personally enjoyed all tour packages and services. Our positive customer reviews are available to make sure that clients feel secure and enjoy their whole journey.
+            </li>
+        </ul>
+    </div>
+
+    <!-- Why Choose Us -->
+
+		{% comment %} <div class="why">
+			<div class="parallax_background parallax-window" data-parallax="scroll"
+				data-image-src="{% static 'images/why.jpg'%}" data-speed="0.8"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_subtitle">simply amazing places</div>
+						<div class="section_title">
+							<h2>Why choose us?</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row why_row">
+
+					<!-- Why item -->
+					<div class="col-lg-4 why_col">
+						<div class="why_item">
+							<div class="why_image">
+								<img src="{% static 'images/why_1.jpg'%}" alt="hlo">
+								<div class="why_icon d-flex flex-column align-items-center justify-content-center">
+									<img src="{% static 'images/why_1.svg'%}" alt="hai">
+								</div>
+							</div>
+							<div class="why_content text-center">
+								<div class="why_title">Fast Services</div>
+								<div class="why_text">
+									<p>Provide a high standard of services suitable for individuals seeking relaxing, 
+										comfortable and memorable experiences in the hospitality and tourism industry.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Why item -->
+					<div class="col-lg-4 why_col">
+						<div class="why_item">
+							<div class="why_image">
+								<img src="{% static 'images/why_2.jpg'%}" alt="">
+								<div class="why_icon d-flex flex-column align-items-center justify-content-center">
+									<img src="{% static 'images/why_2.svg'%}" alt="">
+								</div>
+							</div>
+							<div class="why_content text-center">
+								<div class="why_title">Great Team</div>
+								<div class="why_text">
+									<p>Our team produces expeditions and memories that would satisfy each and every single customer. Also, participate in 
+										 community service by providing general lectures, consultation, and training programs.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Why item -->
+					<div class="col-lg-4 why_col">
+						<div class="why_item">
+							<div class="why_image">
+								<img src="{%static 'images/why_3.jpg'%}" alt="">
+								<div class="why_icon d-flex flex-column align-items-center justify-content-center">
+									<img src="{% static 'images/why_3.svg'%}" alt="fuck">
+								</div>
+							</div>
+							<div class="why_content text-center">
+								<div class="why_title">Best Deals</div>
+								<div class="why_text">
+									<p>Provides the best deal and also have the best tips like when is the best time to travel, 
+										what days are cheaper to book flights, and how to get you free amenities.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div> {% endcomment %}
+
+{% endblock content %}

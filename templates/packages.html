@@ -1,0 +1,219 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<div class="home-1">
+    <div class="background_image" style="background-image:linear-gradient(#00000094, #0000001c, transparent),url({% static 'images/bg3.jpg' %});background-position: center;">
+        <div class="home_slider_content_container" style="top:27%;;">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_slider_content" style="top:50%;;">
+                            <div class="home_title">
+                                <p class="text-light text-decoration-undrline" style="font-size: 5rem;font-family: 'Oswald';opacity:1;font-weight:700;background-color: #0000002b;">Packages</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% comment %} <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
+            <h1 class="mb-5">Awesome Packages</h1>
+        </div>
+        <div class="row g-4 justify-content-center">
+            {% for des in dests %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="package-item">
+
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" src={% static 'img/package-1.jpg' %} alt="">
+                    </div>
+
+                    <div class="d-flex border-bottom">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{des.pkg_to}}</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{des.pkg_days}} days</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Person</small>
+                    </div>
+
+                    <div class="text-center p-4">
+                        <h3 class="mb-0"><i class="fa-solid fa-indian-rupee-sign text-primary"></i> {{des.pkg_price}}</h3>
+                        <div class="mb-3">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                        </div>
+                        <h2>{{des.pkg_title}}</h2>
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
+                        <div class="d-flex justify-content-center mb-2">
+                            <a href={% url 'destination_details' des.id %} class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                            <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    {% comment %} old card {% endcomment %}
+    <!-- Destinations -->
+
+ 
+
+    <div class="row destination_sorting_row">
+        <div class="col">
+            <div class="destination_sorting d-flex flex-row align-items-start justify-content-start">
+                <div class="sorting">
+                    <ul class="item_sorting">
+                        <li>
+                            <span class="sorting_text">Sort By</span>
+                            <i aria-hidden="true" class="fa fa-chevron-down"></i>
+                            <ul>
+                                <li class="product_sorting_btn"
+                                    data-isotope-option='{ "sortBy": "original-order" }'><span>Show
+                                            All</span></li>
+                                <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'>
+                                    <span>Price</span>
+                                </li>
+                                <li class="product_sorting_btn"
+                                    onclick="sortList()">
+                                    <span>Name</span>
+                                </li>
+                            </ul>
+                        </li>
+<!--                                <form action="sortBy" method="get">-->
+<!--                                    <select  class="sorting_text" name="sortBy">-->
+<!--                                        <option disabled selected hidden>Sort By</option>-->
+<!--                                        <option type="submit" class="dropdown-item" value="price">Price</option>-->
+<!--                                        <button type="submit">Hii</button>>-->
+<!--                                        <option class="dropdown-item" value="name">Name</option>-->
+<!--                                    </select>-->
+<!--                                </form>-->
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="destinations" id="destinations">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_subtitle">simply amazing places</div>
+                    <div class="section_title">
+                        <h2>Domestic Destination</h2>
+                    </div>
+                </div>
+            </div>
+
+    <div  class="row destinations_row">
+        <div class="col">
+            <div  class="destinations_container item_grid">
+            
+                {% for des in dests %}
+
+                <!-- Destination -->
+                <div id="id01" class="destination item">
+                    <div class="destination_image">
+                        <a href="destination_details/{{des.id}}"><img src="{{des.pkg_pic.url}}" alt="image" style="height: 300px;
+                            width: 100%;
+                            object-fit: cover;"></a>
+                        {% if des.Domestic %}
+                        <div class="spec_offer text-center"><a href="destination_details/{{des.id}}">Special
+                            Offer</a></div>
+                        {% endif %}
+                    </div>
+                    <div class="destination_content">
+                        <div class="destination_title"><a href="destination_details/{{des.id}}">{{des.pkg_title}}
+                            <h5>{{des.pkg_days}}D/{{des.pkg_night|add:"-1"}}N</h5>
+                        </a></div>
+                        <div class="destination_subtitle">
+                            <a href="destination_details/{{des.id}}">
+                                {% if des.pkg_dec|length > 95 %}
+                                <p>{{des.pkg_dec|slice:95}}...</p>
+                                {% else %}
+                                <p>{{des.pkg_dec}}</p>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <a href="destination_details/{{des.id}}">
+                            <div class="destination_price">Rs. {{des.pkg_price}}</div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+      
+    
+<div class="destinations" id="destinations">
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <div class="section_subtitle">simply amazing places</div>
+            <div class="section_title">
+                <h2>Imternational Destination</h2>
+            </div>
+        </div>
+    </div>
+
+    <div  class="row destinations_row">
+        <div class="col">
+            <div  class="destinations_container item_grid">
+
+                {% for des in dests %}
+
+                <!-- Destination -->
+                <div id="id01" class="destination item">
+                    <div class="destination_image">
+                        <a href="destination_details/{{des.id}}"><img src="{{des.img1.url}}" alt=""></a>
+                        {% if des.International %}
+                        <div class="spec_offer text-center"><a href="destination_details/{{des.id}}">Special
+                            Offer</a></div>
+                        {% endif %}
+                    </div>
+                    <div class="destination_content">
+                        <div class="destination_title"><a href="destination_details/{{des.id}}">{{des.name}}
+                            <h5>{{des.days}}D/{{des.days|add:"-1"}}N</h5>
+                        </a></div>
+                        <div class="destination_subtitle">
+                            <a href="destination_details/{{des.id}}">
+                                {% if des.desc|length > 95 %}
+                                <p>{{des.desc|slice:95}}...</p>
+                                {% else %}
+                                <p>{{des.desc}}</p>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <a href="destination_details/{{des.id}}">
+                            <div class="destination_price">Rs. {{des.price}}</div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row load_more_row">
+        <div class="col">
+            <div class="button load_more_button"><a href="#">load more</a></div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+            
+{% endblock content %}

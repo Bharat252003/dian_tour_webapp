@@ -1,0 +1,154 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{%static 'styles/contact.css'%}">
+<link rel="stylesheet" type="text/css" href="{%static 'styles/contact_responsive.css'%}">
+{% endblock styles %}
+{% block content %}
+
+<!-- Home -->
+
+
+<div class="home-1">
+    <div class="background_image" style="background-image:linear-gradient(#00000094, #0000001c, transparent),url({% static 'images/bg3.jpg' %});background-position: center;">
+        <div class="home_slider_content_container" style="top:27%;;">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_slider_content" style="top:50%;;">
+                            <div class="home_title">
+                                <p class="text-light text-decoration-undrline" style="font-size: 5rem;font-family: 'Oswald';opacity:1;font-weight:700;background-color: #0000002b;">Contact Us</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search 
+    
+    <div class="home_search">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_search_container">
+                        <div class="home_search_title">Search for your trip</div>
+                        <div class="home_search_content">
+                            <form action="#" class="home_search_form" id="home_search_form">
+                                <div
+                                class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                                <input type="text" class="search_input search_input_1" placeholder="City"
+                                required="required">
+                                <input type="text" class="search_input search_input_2" placeholder="Departure"
+                                required="required">
+                                <input type="text" class="search_input search_input_3" placeholder="Arrival"
+                                required="required">
+                                <input type="text" class="search_input search_input_4" placeholder="Budget"
+                                required="required">
+                                <button class="home_search_button">search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+-->
+    <!-- Contact -->
+
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+
+                <!-- Get in touch -->
+                <div class="col-lg-6">
+                    <div class="contact_content">
+                        <div class="contact_title">Get in touch with us</div>
+                        <div class="contact_text">
+                            <p> For any queries contact us at the provided E-mail and Phone number and we will
+                                definitely solve your queries.
+                            </p>
+                        </div>
+                        <div class="contact_list">
+                            <ul>
+                                <li>
+                                    <div>address:</div>
+                                    <div>Ahmedabad,Naroda</div>
+                                </li>
+                                <li>
+                                    <div>phone:</div>
+                                    <div>+91 80008 11140</div>
+                                </li>
+                                <li>
+                                    <div>email:</div>
+                                    <div>dianinternatoinal1001@gmail.com</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-lg-6">
+                    <div class="contact_form_container">
+                        <form action="contact" id="contact_form" class="contact_form" method="POST">
+                            {% csrf_token %}
+                            {% for message in messages %}
+                            <li>
+                                <div class="alert alert-danger">{{message}}</div>
+                            </li>
+                            {% endfor %}
+                            <div style="margin-bottom: 18px"><input type="text"
+                                                                    class="contact_input contact_input_name input"
+                                                                    placeholder="Your Name"
+                                                                    required="required" name="yourName">
+                                <div class="input_border"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6" style="margin-bottom: 18px">
+                                    <div><input type="text" class="contact_input contact_input_email input"
+                                                placeholder="Your E-mail" required="required" name="email">
+                                        <div class="input_border"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" style="margin-bottom: 18px">
+<!--                                    <div><input type="text" class="contact_input contact_input_subject input"-->
+<!--                                                placeholder="Subject" required="required" name="subject">-->
+<!--                                        <div class="input_border"></div>-->
+                                        <select name="subject" required="required" class="contact_input contact_input_subject input ">
+                                            <option value="" disabled selected hidden>Subject</option>
+                                            <option value="testimonial">Add Testimonial</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div><textarea class="contact_textarea contact_input input" placeholder="Message"
+                                           required="required" name="message"></textarea>
+                                <div class="input_border" style="bottom:3px"></div>
+                            </div>
+                            <button class="contact_button">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map -->
+
+    <p style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+    margin-left: 4rem;">
+        <iframe  style="margin-right: 4rem;border: 5px solid orange;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.297390039932!2d72.68120211428375!3d23.08620691974153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e81d12c1844d9%3A0xdf32569c3a44a6c5!2sDian%20International!5e0!3m2!1sen!2sin!4v1678860667857!5m2!1sen!2sin" 
+                width="1350" height="500" allowfullscreen="" loading="lazy" ></iframe>
+    </p>
+
+    
+{% endblock content %}

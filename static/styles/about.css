@@ -1,0 +1,45 @@
+
+
+/*********************************
+7. About
+*********************************/
+
+.about
+{
+	width: 100%;
+	background: #FFFFFF;
+	padding-top: 115px;
+}
+.about_row
+{
+	margin-top: 95px;
+}
+.about_content
+{
+	width: 100%;
+	margin-top: -7px;
+}
+.text_highlight
+{
+	font-size: 18px;
+	font-weight: 700;
+	color: #181818;
+	line-height: 1.66;
+}
+.about_text
+{
+	margin-top: 35px;
+}
+.about_button
+{
+	margin-top: 67px;
+}
+.about_image
+{
+	width: 100%;
+}
+.about_image img
+{
+	max-width: 100%;
+}
+
