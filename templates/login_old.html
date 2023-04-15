@@ -52,8 +52,44 @@
 
     <div class="super_container">
 
+        <!-- Header -->
+
         {% include 'header.html' %}
-        
+        <!-- Menu -->
+
+        <div class="menu">
+            <div class="menu_header d-flex flex-row align-items-center justify-content-start">
+                <div class="menu_logo"><a href="/">Dian Tours</a></div>
+                <div class="menu_close_container ml-auto">
+                    <div class="menu_close">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu_content">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/Packages">Packages</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="logout">Logout</a></li>
+                    {% else %}
+                    <li><a href="register">Register</a></li>
+                    <li><a href="login">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="menu_social">
+                <ul class="d-flex flex-row align-items-start justify-content-start">
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
 
         <!-- Home -->
 
@@ -90,7 +126,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class="home_search_container" style="background: rgb(56 48 48 / 26%);">
+                            <div class="home_search_container">
 
                                 <div class="home_search_title">Login in our Website</div>
                                 <div class="home_search_content">
@@ -133,83 +169,7 @@
             </div>
         </div>
 
-
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="parallax_background parallax-window" data-parallax="scroll"
-                data-image-src="/static/images/footer22.jpg" data-speed="0.8"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="newsletter">
-                            <div class="newsletter_title_container text-center">
-                                <div class="newsletter_title">Subscribe to our newsletter to get the latest trends &
-                                    news</div>
-                                <div class="newsletter_subtitle">Join our database NOW!</div>
-                            </div>
-                            <div class="newsletter_form_container">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row footer_contact_row">
-                    <div class="col-xl-10 offset-xl-1">
-                        <div class="row">
-
-                            <!-- Footer Contact Item -->
-                            <div class="col-xl-4 footer_contact_col">
-                                <div
-                                    class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-                                    <div class="footer_contact_icon"><img src="{% static 'images/sign.svg'%}" alt="">
-                                    </div>
-                                    <div class="footer_contact_title">give us a call</div>
-                                    <div class="footer_contact_list">
-                                        <ul>
-                                            <li>Mobile: +91 80008 11140</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Footer Contact Item -->
-                            <div class="col-xl-4 footer_contact_col">
-                                <div
-                                    class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-                                    <div class="footer_contact_icon"><img src="{% static 'images/trekking.svg'%}"
-                                            alt=""></div>
-                                    <div class="footer_contact_title">come & drop by</div>
-                                    <div class="footer_contact_list">
-                                        <ul style="max-width:190px">
-                                            <li>Ahmedabad,Naroda</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Footer Contact Item -->
-                            <div class="col-xl-4 footer_contact_col">
-                                <div
-                                    class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-                                    <div class="footer_contact_icon"><img src="{% static 'images/around.svg'%}" alt="">
-                                    </div>
-                                    <div class="footer_contact_title">send us a message</div>
-                                    <div class="footer_contact_list">
-                                        <ul>
-                                            <li>dianinternatoinal1001@gmail.com</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-
+        {% include 'footer.html' %}
 
         <script src="{% static '/static/vendor/jquery/jquery.min.js '%} "></script>
         <script src="{% static '/static/js/main.js"></script '%}"></script>

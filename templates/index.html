@@ -126,18 +126,20 @@
 
 		<div class="home_search">
 			<div class="container">
-				
 				<div class="row">
 					<div class="col">
 						<div class="home_search_container">
-							<div class="home_search_title">Search for your trip</div>
+							<div class="home_search_title" style="font-size:1.5rem;">Search for your trip</div>
 							<div class="home_search_content">
-								<form action="search" class="home_search_form" id="home_search_form">
+								<form action="search" class="home_search_form" id="home_search_form" style="font-size:1.5rem">
 									<div
-										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+										class="d-flex flex-lg-row flex-column align-items-center justify-content-lg-between justify-content-start">
 										<input type="text" name="q" class="search_input search_input_1" placeholder="Destination"
 											required="required">
+											<p style="text-align:center;margin-bottom:0;">OR</p>
 										<input type="text" name="min_price" class="search_input search_input_3" placeholder="min price">
+										<p style="text-align:center">OR</p>
+	
 										<input type="text" name="max_price" class="search_input search_input_4" placeholder="max price">
 										<button type="submit" class="home_search_button">search</button>
 									</div>

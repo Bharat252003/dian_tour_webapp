@@ -6,6 +6,8 @@ from .models import *
 import math
 from datetime import date
 import time
+# from string import strip
+from datetime import datetime
 from django.template.loader import render_to_string, get_template
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -70,6 +72,11 @@ def destination_details(request,id):
     request.session['pkg_title'] = dest.pkg_title
     request.session['pkg_price'] = dest.pkg_price
     request.session['pkg_days'] = dest.pkg_days
+    request.session['pkg_to'] = dest.pkg_to
+    request.session['pkg_from'] = dest.pkg_from
+    # request.session['dep_dt'] = datetime.strptime(dest.dep_date, '%Y-%m-%d').date()
+    request.session['dep_date'] = dest.dep_date.isoformat()
+
     # print(request.session['name'])
     # print(request.session['price'])
     # print("Days = ", request.session['day'])
@@ -77,16 +84,90 @@ def destination_details(request,id):
     return render(request,'package_details.html',{'dest':dest})
 
 
-# @login_required
+@login_required(login_url='/accounts/login')
+def booking(request, id):
+    pkg=Packages.objects.filter(id=id)
+    # context={'des':pkg}
+    destinationName = request.session['pkg_title']
+    destinationPrice = request.session['pkg_price']
+    
+    # dep=request.session['dep_date']
+    # d_date=datetime.fromisoformat(dep)
+    # request.session['dep_date']=d_date
+
+    # print(destinationName)
+    # print(destinationPrice)
+
+    if request.method == 'POST':
+        firstName = request.POST['firstName']
+        lastName = request.POST['lastName']
+        fromCity = request.POST['fromCity']
+        toCity = request.POST['toCity']
+        depatureDate = request.POST['depatureDate']
+        days = request.POST['days']
+        noOfRooms = int(request.POST['noOfRooms'])
+        noOfAdults = int(request.POST['noOfAdults'])
+        noOfChildren = int(request.POST['noOfChildren'])
+        email = request.POST['email']
+        phoneNo = request.POST['phoneNo']
+        # totalAmount = int(request.POST['totalAmount']*noOfAdults)
+        totalAmount = int(request.POST['totalAmount'])
+        # price=pkg.pkg_price
+
+        request.session['fname'] = firstName
+        request.session['lname'] = lastName
+        request.session['to_city'] = toCity
+        request.session['from_city'] = fromCity
+        request.session['depature_date'] = depatureDate
+        request.session['days'] = days
+        request.session['no_of_rooms'] = noOfRooms
+        request.session['no_of_adults'] = noOfAdults
+        request.session['no_of_children'] = noOfChildren
+        request.session['email'] = email
+        request.session['phone_no'] = phoneNo
+        request.session['total_amount'] = totalAmount
+        # request.session['total_amount'] = noOfAdults*price
+
+        requiredRooms = 1
+        if noOfAdults/3 > 1:
+            requiredRooms = math.ceil(noOfAdults/3)
+
+        if noOfRooms < requiredRooms:
+            noOfRooms = requiredRooms - noOfRooms
+            messages.info(request, 'For adding more travellers, Please add' + str(noOfRooms) +' more rooms')
+            return redirect('booking', id)
+
+        if noOfRooms > noOfAdults:
+            messages.info(request, 'Minimum 1 Adult is required per Room')
+            return redirect('booking', id)
+
+        if (noOfAdults + noOfChildren)/4 > 1:
+            requiredRooms = math.ceil((noOfAdults + noOfChildren)/4)
+
+        if noOfRooms < requiredRooms:
+            noOfRooms = requiredRooms - noOfRooms
+            messages.info(request, 'For adding more travellers, Please add'+ str(noOfRooms) + 'more rooms')
+            return redirect('booking',id)
+
+        noOfRooms = requiredRooms
+        request.session['no_of_rooms'] = noOfRooms
+        # print("No of rooms = ", noOfRooms)
+        # print("Working")
+        # book = Booking(firstName=firstName, lastName=lastName, fromCity=fromCity, toCity=toCity, depatureDate=depatureDate, arrivalDate=arrivalDate, noOfRooms=noOfRooms, noOfAdults=noOfAdults, noOfChildren=noOfChildren, email=email,phoneNo=phoneNo, totalAmount=totalAmount)
+
+        # book.save()
+        return redirect('receipt')
+    else:
+        return render(request, 'booking.html')
+
+# @login_required(login_url='/accounts/login')
 # def booking(request, pk):
 #     pkg=Packages.objects.filter(id=pk)
 #     context={'des':pkg}
-#     destinationName = request.session['pkg_title']
-#     destinationPrice = request.session['pkg_price']
-
-#     # print(destinationName)
-#     # print(destinationPrice)
-
+#     pkg_to=pkg.values('pkg_from')
+#     request.session['pkg_to']=pkg_to
+#     context={'pkg_to':pkg_to}
+    
 #     if request.method == 'POST':
 #         firstName = request.POST['firstName']
 #         lastName = request.POST['lastName']
@@ -102,76 +183,10 @@ def destination_details(request,id):
 #         totalAmount = int(request.POST['totalAmount']*noOfAdults)
 #         price=pkg.pkg_price
 
-#         request.session['fname'] = firstName
-#         request.session['lname'] = lastName
-#         request.session['to_city'] = toCity
-#         request.session['from_city'] = fromCity
-#         request.session['depature_date'] = depatureDate
-#         request.session['arrival_date'] = days
-#         request.session['no_of_rooms'] = noOfRooms
-#         request.session['no_of_adults'] = noOfAdults
-#         request.session['no_of_children'] = noOfChildren
-#         request.session['email'] = email
-#         request.session['phone_no'] = phoneNo
-#         request.session['total_amount'] = totalAmount
-#         # request.session['total_amount'] = noOfAdults*price
 
-#         requiredRooms = 1
-#         if noOfAdults/3 > 1:
-#             requiredRooms = math.ceil(noOfAdults/3)
-
-#         if noOfRooms < requiredRooms:
-#             noOfRooms = requiredRooms - noOfRooms
-#             messages.info(request, 'For adding more travellers, Please add' + str(noOfRooms) +' more rooms')
-#             return redirect('booking', id)
-
-#         if noOfRooms > noOfAdults:
-#             messages.info(request, 'Minimum 1 Adult is required per Room')
-#             return redirect('booking', id)
-
-#         if (noOfAdults + noOfChildren)/4 > 1:
-#             requiredRooms = math.ceil((noOfAdults + noOfChildren)/4)
-
-#         if noOfRooms < requiredRooms:
-#             noOfRooms = requiredRooms - noOfRooms
-#             messages.info(request, 'For adding more travellers, Please add'+ str(noOfRooms) + 'more rooms')
-#             return redirect('booking',id)
-
-#         noOfRooms = requiredRooms
-#         request.session['no_of_rooms'] = noOfRooms
-#         # print("No of rooms = ", noOfRooms)
-#         # print("Working")
-#         # book = Booking(firstName=firstName, lastName=lastName, fromCity=fromCity, toCity=toCity, depatureDate=depatureDate, arrivalDate=arrivalDate, noOfRooms=noOfRooms, noOfAdults=noOfAdults, noOfChildren=noOfChildren, email=email,phoneNo=phoneNo, totalAmount=totalAmount)
-
-#         # book.save()
 #         return redirect('receipt')
 #     else:
 #         return render(request, 'booking.html',context)
-
-@login_required
-def booking(request, pk):
-    pkg=Packages.objects.filter(id=pk)
-    context={'des':pkg}
-    
-    if request.method == 'POST':
-        firstName = request.POST['firstName']
-        lastName = request.POST['lastName']
-        fromCity = request.POST['fromCity']
-        toCity = request.POST['toCity']
-        depatureDate = request.POST['depatureDate']
-        days = request.POST['days']
-        noOfRooms = int(request.POST['noOfRooms'])
-        noOfAdults = int(request.POST['noOfAdults'])
-        noOfChildren = int(request.POST['noOfChildren'])
-        email = request.POST['email']
-        phoneNo = request.POST['phoneNo']
-        totalAmount = int(request.POST['totalAmount']*noOfAdults)
-        price=pkg.pkg_price
-
-
-        return redirect('receipt')
-    else:
-        return render(request, 'booking.html',context)
 @login_required(login_url='/accounts/login')
 def receipt(request):
     first_name = request.session.get('fname')
@@ -205,19 +220,31 @@ def receipt(request):
     return render(request,'receipt.html',{'totalCost':totalCost, 'date':today, 'currentTime':currentTime})
 
 
+# def search(request):
+#     query = request.GET.get('q')
+#     min_price = request.GET.get('min_price')
+#     max_price = request.GET.get('max_price')
+    
+#     # dests = Packages.objects.filter(pkg_title__icontains=query)
+    
+#     if min_price:
+#         dests = Packages.objects.filter(pkg_price__gt=min_price)
+#     elif max_price:
+#         dests = dests.filter(pkg_price__ls=max_price)
+#     elif query:
+#         dests = Packages.objects.filter(pkg_title__icontains=query)
+    
+#     return render(request, 'search.html', {'dests': dests, 'query': query})
+
 def search(request):
     query = request.GET.get('q')
     min_price = request.GET.get('min_price')
     max_price = request.GET.get('max_price')
     
-    # dests = Packages.objects.filter(pkg_title__icontains=query)
+    dests = Packages.objects.filter(pkg_title__icontains=query)
     
-    if min_price:
-        dests = Packages.filter(pkg_price__gt=min_price)
-    elif max_price:
-        dests = dests.filter(pkg_price__ls=max_price)
-    elif query:
-        dests = Packages.objects.filter(pkg_title__icontains=query)
+    if min_price and max_price:
+        dests = dests.filter(pkg_price__range=(min_price, max_price))
     
     return render(request, 'search.html', {'dests': dests, 'query': query})
 
@@ -255,10 +282,11 @@ def confirm_booking(request):
         amountPerPerson = request.POST['amountPerPerson']
         totalAmount = float(request.POST['totalAmount'])
         userName = request.user.username
+        pkg_title=request.session['pkg_title']
 
 
-        books = ConfirmBooking(fullName=fullName, fromCity=fromCity, toCity=toCity,
-                       depatureDate=depatureDate, days=arrivalDate, noOfRooms=noOfRooms, noOfAdults=noOfAdults,
+        books = ConfirmBooking(fullName=fullName, pkg_title=pkg_title, toCity=toCity,
+                       depatureDate=depatureDate.strip(), days=arrivalDate, noOfRooms=noOfRooms, noOfAdults=noOfAdults,
                        noOfChildren=noOfChildren, email=email, phoneNo=phoneNo, amountPerPerson=amountPerPerson,
                        totalAmount=totalAmount, userName=userName)
         books.save()
@@ -284,10 +312,18 @@ def confirm_booking(request):
 @login_required(login_url='/accounts/login')
 def orderHistory(request):
 
-    bookings = ConfirmBooking.objects.filter(userName = request.user.username)
+    bookings = ConfirmBooking.objects.filter(userName = request.user.username,cancel=0)
     destinations = Packages.objects.all()
+    context={'bookings':bookings, 'destinations':destinations,'pagename':'my orders'}
 
-    return render(request, 'orderHistory.html', {'bookings':bookings, 'destinations':destinations})
+    return render(request, 'dashboard/orderHistory.html',context)
+def CancelorderHistory(request):
+
+    bookings = ConfirmBooking.objects.filter(userName = request.user.username,cancel=1)
+    destinations = Packages.objects.all()
+    context= {'bookings':bookings, 'destinations':destinations,'pagename':'cancelled orders'}
+
+    return render(request, 'dashboard/orderHistory.html',context)
 
 def delete_destination(request, id):
 
@@ -302,8 +338,13 @@ def delete_destination(request, id):
         )
         msg.content_subtype = "html"  # Main content is now text/html
         msg.send()
+        reason=request.POST['reason']
 
-        ConfirmBooking.objects.filter(id=id).delete()
+        # ConfirmBooking.objects.filter(id=id).delete()
+        pkg=ConfirmBooking.objects.get(id=id)
+        pkg.cancel=1
+        pkg.cancel_reason=request.POST.get('reason')
+        pkg.save()
 
 
         return redirect('orderHistory')

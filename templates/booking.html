@@ -27,6 +27,8 @@
                     <div class="booking-form">
                         <div class="form-header">
                             <h1>Make your Booking</h1>
+                            <input class="form-control" type="text" value="{% if request.session.pkg_title %}{{request.session.pkg_title}}
+                                        {% endif %}" name="title" />
                         </div>
                         <form>
                             <div class="row">
@@ -51,14 +53,17 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="From" value="{{request.session.name}}"
-                                               name="fromCity"/>
+                                        <input class="form-control" type="text" placeholder="From" value="{% if request.session.pkg_from %}{{request.session.pkg_from}}
+                                        {% endif %}"
+                                               name="fromCity" readonly/>
                                         <span class="form-label">From</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" value="{{pkg.pkg_to}}" name="toCity" />
+                                        <input class="form-control" type="text" value="{% if request.session.pkg_to %}{{request.session.pkg_to}}
+                                        {% endif %}" name="toCity" readonly />
+
                                         <span class="form-label">To</span>
                                     </div>
                                 </div>
@@ -67,15 +72,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="date" required name="depatureDate" value="{{pkg.dep_date}}"/>
+                                        <input class="form-control" type="text" required name="depatureDate" value="{% if request.session.dep_date %}{{request.session.dep_date}}
+                                        {% endif %}" readonly/>
                                         <span class="form-label">Departure Date</span>
                                     </div>
                                 </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" value="{% if request.session.pkg_days %}{{request.session.pkg_days}}
-                                               {% endif %}"
-                                               name="days" readonly/>
+                                        <input class="form-control" type="text" name="days" value="{% if request.session.pkg_days %}{{request.session.pkg_days}}{% endif %}"  readonly/>
                                         <span class="form-label">Days</span>
                                     </div>
                                 </div>
@@ -104,7 +108,7 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select class="form-control" name="noOfAdults" required>
+                                        <select class="form-control" id="adults" name="noOfAdults" required>
                                             <option value="" selected hidden>no of adults</option>
                                             <option>1</option>
                                             <option>2</option>
@@ -174,14 +178,14 @@
                                     <div class="form-group">
                                         <input class="form-control" type="text" value="Rs.{% if request.session.pkg_price %}{{request.session.pkg_price}}
                                         {% endif %}" name="" />
-                                        <span class="form-label">Total Amount:</span>
+                                        <span class="form-label">Price Per Person</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" value=""
+                                        <input class="form-control" id="total" type="text" 
                                                name="totalAmount" />
-                                        <span class="form-label"></span>
+                                        <span class="form-label">Total Amount</span>
                                     </div>
                                 </div>
                             </div>
@@ -195,6 +199,17 @@
         </div>
     </div>
 </form>
+<script>
+    var selectElement = document.getElementById("adult");
+    var textElement = document.getElementById("total");
+    price=request.session['pkg_price']
+
+    selectElement.addEventListener("change", function() {
+        var selectedValue = selectElement.value;
+        textElement.value=price*selectedValue
+        
+    });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 

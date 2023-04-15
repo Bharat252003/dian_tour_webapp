@@ -104,6 +104,7 @@ class ConfirmBooking(models.Model):
     fullName = models.CharField(max_length=200,default="")
     fromCity = models.CharField(max_length=100)
     toCity = models.CharField(max_length=100)
+    pkg_title=models.CharField(max_length=100,default='')
     depatureDate = models.DateField()
     days = models.IntegerField(default=1)
     noOfRooms = models.IntegerField()
@@ -115,6 +116,8 @@ class ConfirmBooking(models.Model):
     totalAmount = models.FloatField(default=0)
     userName = models.CharField(max_length=200, default="")
     date = models.DateField(("Date"), auto_now_add=True)
+    cancel=models.BooleanField(default=0)
+    cancel_reason=models.TextField(default='')
 
 
     def __str__(self):
