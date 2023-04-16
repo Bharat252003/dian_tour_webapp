@@ -32,7 +32,7 @@ def login(request):
             auth.login(request, user)
             return redirect('/')
         else:
-            messages.info(request, 'Invalid Credentials')
+            messages.info(request, 'Invalid username or password')
             return redirect('login')
     else:
         return render(request, 'login.html')
@@ -48,10 +48,10 @@ def register(request):
         email = request.POST['email']
         if password1 == password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request, 'Username Taken')
+                messages.info(request, 'Username is already exists')
                 return redirect('register')
             elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Email is already Taken')
+                messages.info(request, 'Email is already registered')
                 return redirect('register')
             else:
                 email = request.POST['email']

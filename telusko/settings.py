@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'travello.apps.TravelloConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -149,7 +150,125 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #
 #
 #
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "DIAN Tours Admin",
 
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "DIAN Tours",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "DIAN Tours",
+
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "images/logo_bg.png",
+
+    # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
+    "login_logo": "images/admin_logo.png",
+
+    # Logo to use for login form in dark themes (defaults to login_logo)
+    "login_logo_dark": None,
+     # Welcome text on the login screen
+    "welcome_sign": "Welcome to DIAN Tours Admin site",
+
+     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
+    "site_icon": "images/favicon.ico",
+
+    # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
+    "user_avatar": None,
+
+    # Copyright on the footer
+    "copyright": "DIAN Tours.com",
+
+    # "search_model": ["auth.User", "auth.Group","travello.confirmbooking"],
+
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Packages",  "url": "/admin/travello/packages/", "permissions": ["auth.view_user"]},
+        {"name": "Bookings",  "url": "/admin/travello/confirmbooking/", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        # {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        # {"name":"Database","app": "travello"},
+    ],
+
+    #############
+    # User Menu #
+    #############
+
+    # Additional links to include in the user menu on the top right ("app" url type is not allowed)
+    # "usermenu_links": [
+    #     {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+    #     {"model": "auth.user"}
+    # ],
+
+     #############
+    # Side Menu #
+    #############
+
+    # Whether to display the side menu
+    "show_sidebar": True,
+
+    # Whether to auto expand the menu
+    "navigation_expanded": True,
+
+    # Hide these apps when generating side menu e.g (auth)
+    "hide_apps": [],
+
+    # Hide these models when generating side menu (e.g auth.user)
+    "hide_models": ["travello.packages","travello.confirmbooking","travello.contact","travello.payment"],
+
+    # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
+    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+
+    # Custom links to append to app groups, keyed on app name
+    "custom_links": {
+        "travello": [{
+            "name": "Packages", 
+            "url": "/admin/travello/packages/", 
+            "icon": "fas fa-cube",
+            # "icon": "fa-solid fa-cube",
+            "permissions": ["travello.view_travello"],
+        },
+        {
+            "name": "Bookins", 
+            "url": "/admin/travello/confirmbooking/", 
+            "icon": "fas fa-check-square",
+            # "icon": "fa-solid fa-cube",
+            "permissions": ["travello.view_travello"],
+        },
+        {
+            "name": "Enquiry", 
+            "url": "/admin/travello/contact/", 
+            "icon": "fas fa-question-circle",
+            # "icon": "fa-solid fa-cube",
+            "permissions": ["travello.view_travello"],
+        },
+        {
+            "name": "Payments", 
+            "url": "/admin/travello/payment/", 
+            "icon": "fas fa-rupee-sign",
+            # "icon": "fa-solid fa-cube",
+            "permissions": ["travello.view_travello"],
+        }
+        ]
+    },
+
+    #  "icons": {
+    #     "auth": "fas fa-users-co",
+    #     "auth.user": "fas fa-user",
+    #     "auth.Group": "fas fa-users",
+    # },
+
+
+}
 
 # EMAIL_ACTIVE_FIELD = 'is_active'
 # EMAIL_SERVER = 'smtp.gmail.com'

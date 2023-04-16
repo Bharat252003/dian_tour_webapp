@@ -65,7 +65,7 @@
 
                     <!-- Slide -->
                     <div class="owl-item">
-                        <div class="background_image" style="background-image:url(/static/images/header11.jpg)"
+                        <div class="background_image" style="background:linear-gradient( #0000007d, #00000030),url({% static 'images/header11.jpg' %});background-size:cover;"
                             background-repeat: no-repeat></div>
                         <div class="home_slider_content_container">
                             <div class="container">
@@ -115,7 +115,7 @@
                                             name="password" required>
 
                                         <a href='\accounts/reset_password'>Forgot Password</a>
-                                        <p>Don't have an account? <a href="register" style="color:dodgerblue">Sign
+                                        <p>Don't have an account? <a href={% url 'register' %} style="color:dodgerblue">Sign
                                                 Up</a></p>
 
                                         <div class="clearfix">

@@ -68,7 +68,7 @@
     <!-- Destinations -->
 
  
-
+{% comment %} 
     <div class="row destination_sorting_row">
         <div class="col">
             <div class="destination_sorting d-flex flex-row align-items-start justify-content-start">
@@ -103,15 +103,15 @@
 
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
 
     <div class="destinations" id="destinations">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <div class="section_subtitle">simply amazing places</div>
+                    {% comment %} <div class="section_subtitle">simply amazing places</div> {% endcomment %}
                     <div class="section_title">
-                        <h2>Domestic Destination</h2>
+                        <h2>Amazing packages</h2>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                 {% for des in dests %}
 
                 <!-- Destination -->
-                <div id="id01" class="destination item">
+                <div id="id01" class="destination item" style="margin-botom:10px">
                     <div class="destination_image">
                         <a href="destination_details/{{des.id}}"><img src="{{des.pkg_pic.url}}" alt="image" style="height: 300px;
                             width: 100%;
@@ -133,8 +133,11 @@
                             Offer</a></div>
                         {% endif %}
                     </div>
-                    <div class="destination_content">
-                        <div class="destination_title"><a href="destination_details/{{des.id}}">{{des.pkg_title}}
+                    <div class="destination_content" style="
+                    padding: 10px;
+                    background-color: #ffd88f30;
+                ">
+                        <div class="destination_title" style="margin-top:0px"><a href="destination_details/{{des.id}}">{{des.pkg_title}}
                             <h5>{{des.pkg_days}}D/{{des.pkg_night|add:"-1"}}N</h5>
                         </a></div>
                         <div class="destination_subtitle">

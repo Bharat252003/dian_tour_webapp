@@ -205,7 +205,7 @@
                 ">{{i.pkg_title}}</h3>
                     <!-- <h3 class="mb-0">Featured post</h3>
                     <div class="mb-1 text-muted">Nov 12</div> -->
-                    <div class="row my-3 p-3">
+                    <div class="row p-3">
 
                         <div class="col col-xs-8">
                             <h5>Passenger Details:</h5>
@@ -260,7 +260,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
-                <form action="delete_destination/{{i.id}}" method="post">
+                <form action={% url 'delete_destination' i.id %} method="post">
                 <div class="modal-body">
                     <h4>Why you are going to cancel booking?</h4>
                     <textarea name="reason" id="reason" cols="40" rows="5" style="min-width:99%" placeholder="Enter reason" required></textarea>

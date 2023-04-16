@@ -314,14 +314,14 @@ def orderHistory(request):
 
     bookings = ConfirmBooking.objects.filter(userName = request.user.username,cancel=0)
     destinations = Packages.objects.all()
-    context={'bookings':bookings, 'destinations':destinations,'pagename':'my orders'}
+    context={'bookings':bookings, 'destinations':destinations,'pagename':'my bookings'}
 
     return render(request, 'dashboard/orderHistory.html',context)
 def CancelorderHistory(request):
 
     bookings = ConfirmBooking.objects.filter(userName = request.user.username,cancel=1)
     destinations = Packages.objects.all()
-    context= {'bookings':bookings, 'destinations':destinations,'pagename':'cancelled orders'}
+    context= {'bookings':bookings, 'destinations':destinations,'pagename':'cancelled bookings'}
 
     return render(request, 'dashboard/orderHistory.html',context)
 

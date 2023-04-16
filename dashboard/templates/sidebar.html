@@ -49,10 +49,16 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href={% url 'myorders' %} >
-          <i class="fa-regular bi-globe"></i>
+          <i class="fa-sharp fa-solid fa-square-check"></i>
           <span>my bookings</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href={% url 'cancelorder' %} >
+          <i class="fa-solid fa-ban"></i>
+          <span>cancel bookings</span>
+        </a>
+      </li>
 
       {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.html">

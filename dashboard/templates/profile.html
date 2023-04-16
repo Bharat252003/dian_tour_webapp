@@ -52,27 +52,27 @@
                   <div class="col-lg-9 col-md-8">{{request.user.last_name}}</div>
                 </div>
 
-                <div class="row">
+                {% comment %} <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Gender</div>
                   <div class="col-lg-9 col-md-8">{{request.user.gender}}</div>
-                </div>
+                </div> {% endcomment %}
 
-                <div class="row">
+                {% comment %} <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Date Of Birth</div>
                   <div class="col-lg-9 col-md-8">{{request.user.dob}}</div>
-                </div>
+                </div> {% endcomment %}
 
-                <div class="row">
+                {% comment %} <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
                   <div class="col-lg-9 col-md-8">+91 {{request.user.cno}}</div>
-                </div>
+                </div> {% endcomment %}
                 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
                   <div class="col-lg-9 col-md-8">{{request.user.email}}</div>
                 </div>
 
-                <div class="row">
+                {% comment %} <div class="row">
                   <div class="col-lg-3 col-md-4 label">city</div>
                   <div class="col-lg-9 col-md-8">{{request.user.add_city}}</div>
                 </div>
@@ -83,7 +83,7 @@
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">zipcode</div>
                   <div class="col-lg-9 col-md-8">{{request.user.add_zip}}</div>
-                </div>
+                </div> {% endcomment %}
 
 
               </div>
