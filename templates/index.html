@@ -4,7 +4,7 @@
 {% block content %}
 		<!-- Menu -->
 
-		<div class="menu">
+		{% comment %} <div class="menu">
 			<div class="menu_header d-flex flex-row align-items-center justify-content-start">
 				<div class="menu_logo">
 					<a href="/">
@@ -44,7 +44,7 @@
 					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 				</ul>
 			</div>
-		</div>
+		</div> {% endcomment %}
 
 		<!-- Home -->
 
@@ -63,8 +63,18 @@
 									<div class="col">
 										<div class="home_slider_content">
 											<div class="home_title">
-												<p class="text-light fs-3" style="font-size: 5rem;font-family: 'Oswald';opacity:0.8;font-weight:700">Enjoy Your Holidays With DIAN</p>
+												<p class="text-light fs-3" style="font-family: 'Josefin Sans';opacity:0.8;font-weight:700;">Enjoy Your Holidays With DIAN</p>
+												<h4 style="margin-bottom:10vh;color: #ffe9c1;">make your week ends, holidays and vaction memorable and enjoy every "Moments"</h4>
 											</div>
+
+											<div class="position-abolute w-90 mx-auto" style="z-index:100;width:80%">
+												<form action="search" method="get" class="d-flex">
+													{% csrf_token %}
+													<input class="form-control border-0 rounded-pill px-4 w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Manali" name='q'>
+													<button type="submit" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;margin-right:0.5rem;right:0px;font-weight:900">Search</button>
+												</form>
+												</div>
+
 										</div>
 									</div>
 								</div>
@@ -111,6 +121,7 @@
 					</div> {% endcomment %}
 
 				</div>
+				
 
 				<div class="home_page_nav">
 					<ul class="d-flex flex-column align-items-end justify-content-end">
@@ -119,12 +130,14 @@
 						<li><a href="#" data-scroll-to="#news">Latest<span>03</span></a></li>
 					</ul>
 				</div>
+
+				
 			</div>
 		</div>
 
 		<!-- Search -->
 
-		<div class="home_search">
+		{% comment %} <div class="home_search">
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -149,7 +162,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> {% endcomment %}
+		
 
 		<!-- Intro -->
 

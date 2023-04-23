@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block form %}
+
+<div class="container" style="
+padding: auto;
+display: flex;
+justify-content: center;
+min-height: 100vh;
+">
+
+    <div class="text-center" style="margin-top:0px;">
+        {% csrf_token %}
+        <h3 class="mt-4">your payment has been received</h3>
+        <img src="https://funtura.in/lko/wp-content/themes/funtura/assets/images/success.svg" class="img-fluid mt-4" style="heig
+    :300px">
+    <h3 class="mt-5">Thank you for using <span class="text-primary">DIAN Tours</span></h3>
+    <a href={% url 'orderHistory' %} class="fs-1 btn" style="font-size:20px;margin:10px;border:3px solid;" ><i class="fa-solid fa-arrow-left"></i> view Bookings</a>
+    
+</div>
+</div>
+
+<style>
+    .text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    }
+</style>
+
+{% endblock %}

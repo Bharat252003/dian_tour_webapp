@@ -184,7 +184,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" id="total" type="text" 
-                                               name="totalAmount" />
+                                               name="totalAmount" value={% if request.session.pkg_price %}
+                                               {{request.session.pkg_price}}
+                                               {% endif %}/>
                                         <span class="form-label">Total Amount</span>
                                     </div>
                                 </div>

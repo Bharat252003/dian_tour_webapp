@@ -1,7 +1,5 @@
 {% load static %}
 
-Hiii
-
 <!DOCTYPE html>
 <html lang="en">
   {% block content %}
@@ -47,10 +45,29 @@ Hiii
       type="text/css"
       href="{% static 'styles/responsive.css' %}"
     />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      input{
+        width: 100%;
+        padding: 5px;
+        font-size: 20px;
+      }
+      .ad-form{
+        font-size: 20px;
+        text-align: left;
+      }
+
+    </style>
   </head>
 
   <body>
-    <div class="super_container">
+
+      {% block form %}
+      {% endblock form %}
+      
+    
+    {% comment %} <div class="super_container">
       <!-- Header -->
 
       <header class="header">
@@ -169,7 +186,7 @@ Hiii
           </ul>
         </div>
       </div>
-    </div>
+    </div> {% endcomment %}
 
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>

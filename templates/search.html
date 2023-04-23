@@ -5,49 +5,28 @@
 
     <!-- Menu -->
 
-    <div class="menu">
-        <div class="menu_header d-flex flex-row align-items-center justify-content-start">
-            <div class="menu_logo"><a href="/">Dian Tours</a></div>
-            <div class="menu_close_container ml-auto">
-                <div class="menu_close">
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        </div>
-        <div class="menu_content">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="about">About Us</a></li>
-                <li><a href="Packages">Packages</a></li>
-                <li><a href="contact">Contact</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="accounts/logout">Logout</a></li>
-                {% else %}
-                <li><a href="accounts/register">Register</a></li>
-                <li><a href="accounts/login">Login</a></li>
-                {% endif %}
-            </ul>
-        </div>
-        <div class="menu_social">
-            <ul class="d-flex flex-row align-items-start justify-content-start">
-                <li><a href="#"><i aria-hidden="true" class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i aria-hidden="true" class="fa fa-linkedin"></i></a></li>
-            </ul>
-        </div>
-    </div>
+    
 
     <!-- Home -->
 
-    <div class="home">
-        <div class="background_image" style="background-image:linear-gradient(#00000094, #0000001c, transparent,transparent),url({% static 'images/bg3.jpg' %});
+    <div class="home-1">
+        <div class="background_image" style="background-image:linear-gradient(#00000094, #0000001c, #0000001a,transparent),url({% static 'images/bg3.jpg' %});
         background-position: center;"></div>
+
+        <div class="position-abolute w-90 mx-auto" style="z-index:100;width:60%;top: 50%;">
+            <h2 class="text-center py-2 text-dark" style="font-size:3vw">Explore more packages</h2>
+            <form action="search" method="get" class="d-flex">
+                {% csrf_token %}
+                <input class="form-control border-0 rounded-pill px-4 w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Manali" name='q'>
+                <button type="submit" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;margin-right:0.5rem;right:0px;font-weight:900">Search</button>
+            </form>
+        </div>
+
     </div>
 
     <!-- Search -->
 
-    <div class="home_search">
+    {% comment %} <div class="home_search">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -72,7 +51,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
+    
 
     <!-- Destinations -->
 
@@ -80,7 +60,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <div class="section_subtitle">simply amazing places</div>
+                    {% comment %} <div class="section_subtitle">simply amazing places</div> {% endcomment %}
                     <div class="section_title">
                         <h2>your search results for "{{query}}"</h2>
                     </div>

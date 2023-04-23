@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_email_verification', 
     'dashboard.apps.DashboardConfig',
+    'accounts.apps.AccountsConfig'
     
     ]
 
@@ -310,10 +311,21 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'priyadhokiya143@gmail.com'
-EMAIL_HOST_PASSWORD = 'gddqhwfdoaapnqba'
+EMAIL_HOST_USER = 'diantours2023@gmail.com'
+EMAIL_HOST_PASSWORD = 'gohoamxlcukpxkpm' 
+DEFAULT_FROM_EMAIL = 'diantours2023@gmail.com'
+# EMAIL_HOST_USER = 'priyadhokiya143@gmail.com'
+# EMAIL_HOST_PASSWORD = 'gddqhwfdoaapnqba'
+# EMAIL_HOST_PASSWORD = 'kkgbyaepzqiiogmu'
+# EMAIL_HOST_PASSWORD = 'Diantours@2023'
 # EMAIL_ACTIVE_FIELD = 'is_active'
 
 # django_heroku.settings(locals())
-RAZORPAY_API_KEY="rzp_test_8TSdUFj7Vi1gim"
-RAZORPAY_API_SECRET_KEY="Kpn7jdxLjZE5l2C2MSae403k"
+# RAZORPAY_API_KEY="rzp_test_8TSdUFj7Vi1gim"
+# RAZORPAY_API_SECRET_KEY="Kpn7jdxLjZE5l2C2MSae403k"
+CSRF_TRUSTED_ORIGINS = ['https://api.razorpay.com']
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = False
+RAZORPAY_API_KEY="rzp_test_hAaloRIq5Dczf6"
+RAZORPAY_API_SECRET_KEY="Mt2sZff99nQsGexVvBWNLJFo"
+	

@@ -123,13 +123,27 @@ class ConfirmBooking(models.Model):
     def __str__(self):
         return self.fullName
 
+#class Payment(models.Model):
+#     payment_id=models.AutoField(primary_key=True)
+#     customer_name=models.ForeignKey(ConfirmBooking,on_delete=models.CASCADE, related_name='payments_by_customer_num',
+#         verbose_name=('Customer Number'))
+#     customer_num=models.ForeignKey(ConfirmBooking,on_delete=models.CASCADE, related_name='payments_by_customer_name',verbose_name=('Customer Name'))
+#     payment_amount=models.IntegerField()
+#     paid=models.BooleanField(default=False)
+
+#     class meta:
+#         verbose_name = ('Payment')
+#         verbose_name_plural = ('Payments') 
+
 class Payment(models.Model):
     payment_id=models.AutoField(primary_key=True)
-    customer_name=models.ForeignKey(ConfirmBooking,on_delete=models.CASCADE, related_name='payments_by_customer_num',
+    name=models.ForeignKey(ConfirmBooking,on_delete=models.CASCADE, related_name='payments_by_customer_num',
         verbose_name=('Customer Number'))
-    customer_num=models.ForeignKey(ConfirmBooking,on_delete=models.CASCADE, related_name='payments_by_customer_name',verbose_name=('Customer Name'))
+    num=models.ForeignKey(ConfirmBooking,on_delete=models.CASCADE, related_name='payments_by_customer_name',verbose_name=('Customer Name'))
     payment_amount=models.IntegerField()
     paid=models.BooleanField(default=False)
+    razor_pay_payment_id=models.CharField(max_length=100,null=True,blank=True)
+    razor_pay_payment_sign=models.CharField(max_length=100,null=True,blank=True)
 
     class meta:
         verbose_name = ('Payment')

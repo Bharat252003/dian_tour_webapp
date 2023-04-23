@@ -46,6 +46,7 @@ button:hover {
 .cancelbtn, .signupbtn {
   float: left;
   width: 50%;
+  font-weight: 900;
 }
 
 /* Add padding to container elements */

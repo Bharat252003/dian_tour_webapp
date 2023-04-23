@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.template import Context
 from django.template.loader import get_template, render_to_string
 from django.urls import reverse
+from .forms import SuperuserCreationForm
 from django.utils.encoding import (DjangoUnicodeDecodeError, force_bytes,
                                    force_str)
 from django.utils.html import strip_tags
@@ -130,6 +131,17 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+def create_superuser(request):
+    if request.method == 'POST':
+        form = SuperuserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/admin/login')
+    else:
+        form = SuperuserCreationForm()
+    return render(request, 'create_superuser.html', {'form': form})
+
+
 class VerificationView(View):
     def get(self, request, uidb64, token):
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -137,3 +149,4 @@ class VerificationView(View):
         user.is_active = True
         user.save()
         return redirect('login')
+

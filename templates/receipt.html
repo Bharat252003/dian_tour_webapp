@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 
     <title>Receipt</title>
 </head>
@@ -243,51 +245,41 @@
                     </table>
 
                     <div class="d-flex justify-content-center">
-                        <button id="cmd2,rzp-button1" class="btn btn-success btn-lg">Confirm
+                        <form action="success" method="POST">
+                        <button id="rzp-button1" class="btn btn-success btn-lg">Confirm
                             Booking
                         </button>
-                        <div class="btn-next">
-                            <form action="success" method="POST">
-                                <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="rzp_test_vX6DvyDQjO0t88"
-                                    data-amount="{{payment.amount}}" data-currency="INR" data-order_id="{{payment.id}}"
-                                    data-buttontext="Book Now" data-button_theme = "#f381e0" data-name="Home maid" data-description="Test transaction"
-                                    data-image="https://example.com/your_logo.jpg" data-prefill.name="Tasmi jasani"
-                                    data-prefill.email="tasmijasani@gmail.com" data-prefill.contact="9016175048"
-                                    data-theme.color="#F37254"></script>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-                
-                        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-                        <script>
-                        var options = {
-                            "key": "{{api_key}}", // Enter the Key ID generated from the Dashboard
-                            "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                            "currency": "INR",
-                            "name": "Acme Corp", //your business name
-                            "description": "Test Transaction",
-                            "image": "https://example.com/your_logo",
-                            "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                            "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-                            "prefill": {
-                                "name": "Gaurav Kumar", //your customer's name
-                                "email": "gaurav.kumar@example.com",
-                                "contact": "9000090000"
-                            },
-                            "notes": {
-                                "address": "Razorpay Corporate Office"
-                            },
-                            "theme": {
-                                "color": "#3399cc"
+                        <p>{{request.session.amount }}</p>
+                       <script>
+                            var options = {
+                                "key": "rzp_test_hAaloRIq5Dczf6", // Enter the Key ID generated from the Dashboard
+                                "amount": "{{total_paisa}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                                "currency": "INR",
+                                "name": "Dian Tours", //your business name
+                                "description": "Test Transaction",
+                                "image": "static/images/logo_bg.png",
+                                "order_id": "{{order.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                                "callback_url": "{{callback_url}}",
+                                "prefill": {
+                                    "name": "{{request.session.fullname}}", //your customer's name
+                                    "email": "{{request.session.email}}",
+                                    "contact": "9000090000"
+                                },
+                                "notes": {
+                                    "address": "Razorpay Corporate Office"
+                                },
+                                "theme": {
+                                    "color": "#f28a00"
+                                }
+                            };
+                            var rzp1 = new Razorpay(options);
+                            console.log(rzp1)
+                            document.getElementById('rzp-button1').onclick =async function(e){
+                                e.preventDefault();
+                              await  rzp1.open();
                             }
-                        };
-                        var rzp1 = new Razorpay(options);
-                        document.getElementById('rzp-button1').onclick = function(e){
-                            rzp1.open();
-                            e.preventDefault();
-                        }
-                        </script>
+                            </script>
+                        
                     </div>
                 </div>
 

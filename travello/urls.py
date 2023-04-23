@@ -16,5 +16,6 @@ urlpatterns = [
     path('orderHistory', views.orderHistory, name="orderHistory"),
     path('email/', include(email_urls)),
     path('delete_destination/<int:id>', views.delete_destination, name="delete_destination"),
-    # path('sortBy', views.sortBy, name="sortBy"),
+    path('receipt/success', views.success, name="success"),
+
 ]

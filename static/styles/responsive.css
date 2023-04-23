@@ -144,6 +144,9 @@
 	{
 		font-size: 72px;
 	}
+	.home_title p{
+		font-size: 3rem;
+	}
 	.home_search
 	{
 		height: auto;
@@ -326,6 +329,10 @@
 	.home_title h2
 	{
 		font-size: 48px;
+	}
+	.home_title p
+	{
+		font-size: 2rem;
 	}
 	.search_input
 	{

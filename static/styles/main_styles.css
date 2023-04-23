@@ -138,6 +138,9 @@ h6::selection
 {
 	
 }
+.rounded-pill{
+	border-radius:50px;
+}
 .form-control
 {
 	color: #db5246;
@@ -403,8 +406,8 @@ section
 }
 .hamburger i
 {
-	font-size: 20px;
-	color: rgba(255,255,255,0.5);
+	font-size: 30px;
+	color: white;
 	cursor: pointer;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -449,7 +452,7 @@ section
 }
 .menu_logo a
 {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Secular One',sans-serif;
 	font-size: 30px;
 	font-weight: 500;
 	color: #181818;
@@ -511,7 +514,7 @@ section
 }
 .menu_content ul li a
 {
-	font-size: 48px;
+	font-size: 40px;
 	font-weight: 500;
 	color: #181818;
 	-webkit-transition: all 200ms ease;
@@ -593,6 +596,9 @@ section
 	line-height: 1.1;
 	font-weight: 400;
 	color: #FFFFFF;
+}
+.home_title p{
+	font-size: 4rem;
 }
 .home_page_nav
 {
@@ -680,18 +686,18 @@ section
 }
 .home_search_title
 {
-	width: 247px;
+	width: 100%;
 	height: 55px;
-	background: #FFFFFF;
+	background: #fff5d7;
 	margin-left: auto;
 	margin-right: auto;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	line-height: 55px;
 	font-family: 'Oswald', sans-serif;
-	font-size: 18px;
+	font-size: 30px;
 	color: #2e2e2e;
-	font-weight: 400;
+	font-weight: 600;
 	text-align: center;
 }
 .home_search_content
@@ -924,6 +930,9 @@ section
 	font-weight: 700;
 	color: #ff9d00;
 	margin-top: 16px;
+}
+.single_destination{
+	margin-bottom: 1rem;
 }
 
 /*********************************

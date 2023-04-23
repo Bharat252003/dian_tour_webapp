@@ -34,6 +34,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Travello template project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href={% static 'images/favicon.ico' %} type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
     <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -94,7 +95,7 @@
 
                                 <div class="home_search_title">Login in our Website</div>
                                 <div class="home_search_content">
-                                    <form  method="POST" class="home_search_form" id="home_search_form">
+                                    <form  method="POST" class="home_search_form" id="home_search_form" style="font-size:20px;">
                                         {% csrf_token %}
                                         {% for message in messages %}
                                         <li>
@@ -103,7 +104,7 @@
                                         {% endfor %}
 
                                         <h1>Log In</h1>
-                                        <p>Please Enter your UserName and Password.</p>
+                                        <p style="font-size:20px;">Please Enter your UserName and Password.</p>
                                         <hr>
 
                                         <label for="newsletter_input_name"><b>Username</b></label>
@@ -115,7 +116,7 @@
                                             name="password" required>
 
                                         <a href='\accounts/reset_password'>Forgot Password</a>
-                                        <p>Don't have an account? <a href={% url 'register' %} style="color:dodgerblue">Sign
+                                        <p style="font-size:17px;">Don't have an account? <a href={% url 'register' %} style="color:dodgerblue">Sign
                                                 Up</a></p>
 
                                         <div class="clearfix">
