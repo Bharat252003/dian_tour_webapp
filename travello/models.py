@@ -45,8 +45,8 @@ class Contact(models.Model):
 class Packages(models.Model):
     # pkg_id=models.IntegerField()
     offer = models.BooleanField(default=False)
-    Domestic = models.BooleanField(default=1)
-    International = models.BooleanField(default=1)
+    Domestic = models.BooleanField(default=0)
+    International = models.BooleanField(default=0)
     pkg_type=models.CharField(max_length=30)
     pkg_title=models.CharField(max_length=30)
     dep_date=models.DateField()
@@ -149,3 +149,6 @@ class Payment(models.Model):
         verbose_name = ('Payment')
         verbose_name_plural = ('Payments')
  
+class Feedback(models.Model):
+    name=models.CharField(max_length=20)
+    message=models.TextField()

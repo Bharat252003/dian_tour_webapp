@@ -8,10 +8,12 @@ urlpatterns = [
     path('Packages', views.Package, name="Packages"),
     path('contact/', views.contact, name="contact"),
     path('destination_details/<int:id>', views.destination_details, name='destination_details'),
-    path('booking/<int:id>', views.booking, name="booking"),
+    # path('booking/<int:id>', views.booking, name="booking"), 
+    path('booking/<int:id>', views.confirm_booking, name="booking"),
     path('receipt', views.receipt, name='receipt'),
     path('search', views.search, name='search'),
     path('confirm_booking', views.confirm_booking, name='confirm_booking'),
+    # path('confirm_booking', views.confirm_booking, name='confirm_booking'), {% endcomment %}
     path('payment', views.pmnt, name='payment'),
     path('orderHistory', views.orderHistory, name="orderHistory"),
     path('email/', include(email_urls)),

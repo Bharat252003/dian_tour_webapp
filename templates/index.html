@@ -70,7 +70,7 @@
 											<div class="position-abolute w-90 mx-auto" style="z-index:100;width:80%">
 												<form action="search" method="get" class="d-flex">
 													{% csrf_token %}
-													<input class="form-control border-0 rounded-pill px-4 w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Manali" name='q'>
+													<input class="form-control border-0 rounded-pill px-4 w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Manali" name='q' required>
 													<button type="submit" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;margin-right:0.5rem;right:0px;font-weight:900">Search</button>
 												</form>
 												</div>
@@ -362,7 +362,7 @@
 									<div class="testimonial_author">
 										<div
 											class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-											<h4>~{{t.yourName}}</h4>
+											<h4>~{{t.name}}</h4>
 										</div>
 									</div>
 								</div>
@@ -372,13 +372,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="test_nav">
+			{% comment %} <div class="test_nav">
 				<ul class="d-flex flex-column align-items-end justify-content-end">
 					<li><a href="#">City Breaks Clients<span>01</span></a></li>
 					<li><a href="#">Cruises Clients<span>02</span></a></li>
 					<li><a href="#">All Inclusive Clients<span>03</span></a></li>
 				</ul>
-			</div>
+			</div> {% endcomment %}
 		</div>
 
 		<!-- News -->

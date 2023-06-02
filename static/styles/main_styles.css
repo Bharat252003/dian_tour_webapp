@@ -934,6 +934,9 @@ section
 .single_destination{
 	margin-bottom: 1rem;
 }
+.single_destination p{
+	font-size: 18px !important;
+}
 
 /*********************************
 9. Testimonials

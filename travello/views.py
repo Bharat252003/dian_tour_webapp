@@ -28,7 +28,7 @@ def index(request):
     dests = Packages.objects.all()
     destsWithOffer = Packages.objects.filter(offer=True)
     # print(destsWithOffer)
-    testimonials = Contact.objects.filter(subject = "testimonial")
+    testimonials = Feedback.objects.all()
     # print(testimonials)
     # print(testimonials.count())
     return render(request, 'index.html', {'dests': dests, 'testimonials':testimonials, 'testimonialCount':testimonials.count(), 'destsWithOffer': destsWithOffer.count()})
@@ -354,31 +354,47 @@ def receipt(request):
     return render(request,'receipt.html',{'callback_url':callback_url,'totalCost':totalCost,'total_paisa':totalCost*100, 'date':today, 'currentTime':currentTime})
 
 
-def confirm_booking(request):
+def confirm_booking(request,id):
     if request.method == 'POST':
-        fullName = request.POST['fullName']
+        # fullName = request.POST['fullName']
+        firstName = request.POST['firstName']
+        lastName = request.POST['lastName']
         fromCity = request.POST['fromCity']
         toCity = request.POST['toCity']
         depatureDate = request.POST['depatureDate']
-        arrivalDate = request.POST['days']
-        noOfRooms= int(request.POST['noOfRooms'])
-        noOfAdults  = int(request.POST['noOfAdults'])
+        days = request.POST['days']
+        noOfRooms = int(request.POST['noOfRooms'])
+        noOfAdults = int(request.POST['noOfAdults'])
         noOfChildren = int(request.POST['noOfChildren'])
         email = request.POST['email']
         phoneNo = request.POST['phoneNo']
-        amountPerPerson = request.POST['amountPerPerson']
-        totalAmount = float(request.POST['totalAmount'])
+        # totalAmount = int(request.POST['totalAmount']*noOfAdults)
+        totalAmount = int(request.POST['totalAmount'])
         userName = request.user.username
         pkg_title=request.session['pkg_title']
 
+        # price=pkg.pkg_price
 
-        books = ConfirmBooking(fullName=fullName, pkg_title=pkg_title, toCity=toCity,
-                       depatureDate=depatureDate.strip(), days=arrivalDate, noOfRooms=noOfRooms, noOfAdults=noOfAdults,
-                       noOfChildren=noOfChildren, email=email, phoneNo=phoneNo, amountPerPerson=amountPerPerson,
-                       totalAmount=totalAmount, userName=userName)
+        request.session['fname'] = firstName
+        request.session['lname'] = lastName
+        request.session['to_city'] = toCity
+        request.session['from_city'] = fromCity
+        request.session['depature_date'] = depatureDate
+        request.session['days'] = days
+        request.session['no_of_rooms'] = noOfRooms
+        request.session['no_of_adults'] = noOfAdults
+        request.session['no_of_children'] = noOfChildren
+        request.session['email'] = email
+        request.session['phone_no'] = phoneNo
+        request.session['total_amount'] = totalAmount
+        
+
+        books = ConfirmBooking(fullName=firstName+" "+lastName, fromCity=fromCity, toCity=toCity, depatureDate=depatureDate.strip(),noOfRooms=noOfRooms, noOfAdults=noOfAdults, noOfChildren=noOfChildren, email=email,phoneNo=phoneNo, totalAmount=totalAmount, pkg_title=pkg_title,userName=userName,date=datetime.now()
+                    #    depatureDate=depatureDate.strip(),
+                       )
         books.save()
 
-        message = render_to_string('order_placed_body.html', {'fullName':fullName, 'fromCity':fromCity, 'toCity':toCity, 'depatureDate':depatureDate,'arrivalDate':arrivalDate,'noOfRooms':noOfRooms,'noOfAdults':noOfAdults,'noOfChildren':noOfChildren,'email':email,'phoneNo':phoneNo,'amountPerPerson':amountPerPerson, 'totalAmount':totalAmount})
+        message = render_to_string('order_placed_body.html',{'fullName':firstName+" "+lastName, 'fromCity':fromCity, 'toCity':toCity, 'depatureDate':depatureDate.strip(),'noOfRooms':noOfRooms,'noOfAdults':noOfAdults,'noOfChildren':noOfChildren,'email':email,'phoneNo':phoneNo,'totalAmount':totalAmount})
         msg = EmailMessage(
             'Dian Tours',
             message,
@@ -392,7 +408,7 @@ def confirm_booking(request):
 
         # print("User Added")
 
-        return redirect('/')
+        return redirect('receipt')
     else:
         return render(request,'booking.html')
     

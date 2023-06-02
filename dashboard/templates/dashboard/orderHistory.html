@@ -200,9 +200,7 @@
                 </div>
 
                 <div class="col d-flex flex-column position-static">
-                    <h3 class="card-ttle p-3 text-white" style="
-                    background-color: orange;
-                ">{{i.pkg_title}}</h3>
+                    <h3 class="card-ttle p-3 text-white" style="{% if pagename == "my bookings" %}background-color: orange; {% else %} background-color: #ff7d7d;{% endif %}">{{i.pkg_title}}</h3>
                     <!-- <h3 class="mb-0">Featured post</h3>
                     <div class="mb-1 text-muted">Nov 12</div> -->
                     <div class="row p-3">
@@ -237,8 +235,10 @@
                                     <p>{{i.date}}</p>
                                     <p>{{i.depatureDate}}</p>
                                     <p>Rs. {{i.totalAmount}}</p>
+                                    {% if pagename == "my bookings" %}
                                     <a href="#" class="btn btn-outline-danger my-3" role="button" aria-pressed="true"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal">Cancel</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

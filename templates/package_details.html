@@ -39,9 +39,7 @@
                     </div>
                     
                 </div>
-                <button class="btn-book btn btn-block" style="border:3px solid orange;color:orange;font-size:20px;font-weight:700;" type="submit"
-                                            onclick="window.location.href='/booking/{{dest.id}}'">Book
-                                            Now</button>
+                <button class="btn-book btn btn-block" style="border:3px solid orange;color:orange;font-size:20px;font-weight:700;background: #fff3dd;" type="submit" onclick="window.location.href='/booking/{{dest.id}}'">Book Now</button>
                 {% comment %} <a class="btn btn-primary fs-3 py-3 px-5 mt-2" href={% url 'booking' dest.id %}>Book Now</a> {% endcomment %}
             </div>
         </div>
@@ -79,7 +77,7 @@
     <h2 style="border-left:10px solid orange;margin-bottom: 10px;margin-top: 10px;" class="px-1">  package Summary:</h2>
 <hr class="text-primary fs-bold" style="height: 5px;">
 
-    <p class="mb-4 fs-5">{{dest.pkg_dec}}</p>
+    <p class="mb-4 " style="font-size:20px;">{{dest.pkg_dec}}</p>
 <h2 style="border-left:10px solid orange;margin-bottom: 10px;" class="px-1 mb-3"> Day wise Itenerary</h2>
 <hr class="text-primary fs-bold" style="height: 5px;">
 <div class="single_destination">

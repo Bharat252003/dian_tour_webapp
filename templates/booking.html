@@ -36,9 +36,8 @@
                                     <div class="form-group">
                                         <span class="form-label">First Name</span>
                                         <input class="form-control" type="text" placeholder="First Name"
-                                        
                                         value="{{request.user.first_name}}"
-                                         name="firstName" />
+                                         name="firstName" readonly/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -46,7 +45,7 @@
                                         <span class="form-label">Last Name</span>
                                         <input class="form-control" type="text" placeholder="Last Name"
                                         value="{{request.user.last_name}}"
-                                               name="lastName" />
+                                               name="lastName" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +87,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select class="form-control" name="noOfRooms" required>
+                                        {% comment %} <select class="form-control" name="noOfRooms" required>
                                             <option value="" selected hidden>no of rooms</option>
                                             <option>1</option>
                                             <option>2</option>
@@ -100,7 +99,8 @@
                                             <option>8</option>
                                             <option>9</option>
                                             <option>10</option>
-                                        </select>
+                                        </select> {% endcomment %}
+                                        <input type="number" max="10" min="1" class="form-control" name="noOfRooms" placeholder="rooms" required>
                                         <span class="select-arrow"></span>
                                         <span class="form-label">Rooms</span>
                                     </div>
@@ -108,7 +108,7 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select class="form-control" id="adults" name="noOfAdults" required>
+                                        <!-- <select class="form-control" id="adults" name="noOfAdults" required>
                                             <option value="" selected hidden>no of adults</option>
                                             <option>1</option>
                                             <option>2</option>
@@ -130,14 +130,15 @@
                                             <option>18</option>
                                             <option>19</option>
                                             <option>20</option>
-                                        </select>
+                                        </select> -->
+                                        <input type="number" max="10" min="1" class="form-control" name="noOfAdults" placeholder="Adults" required>
                                         <span class="select-arrow"></span>
                                         <span class="form-label">Adults</span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select class="form-control" name="noOfChildren" required>
+                                        <!-- <select class="form-control" name="noOfChildren" required>
                                             <option value="" selected hidden>no of children</option>
                                             <option>0</option>
                                             <option>1</option>
@@ -150,7 +151,8 @@
                                             <option>8</option>
                                             <option>9</option>
                                             <option>10</option>
-                                        </select>
+                                        </select> -->
+                                        <input type="number" max="10" min="0" class="form-control" name="noOfChildren" placeholder="Childrens" required>
                                         <span class="select-arrow"></span>
                                         <span class="form-label">Children</span>
                                     </div>
@@ -176,9 +178,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" value="Rs.{% if request.session.pkg_price %}{{request.session.pkg_price}}
-                                        {% endif %}" name="" />
-                                        <span class="form-label">Price Per Person</span>
+                                        <input class="form-control" type="text" value="Price Per Person" name="" disabled/>
+                                        <span class="form-label"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -186,8 +187,8 @@
                                         <input class="form-control" id="total" type="text" 
                                                name="totalAmount" value={% if request.session.pkg_price %}
                                                {{request.session.pkg_price}}
-                                               {% endif %}/>
-                                        <span class="form-label">Total Amount</span>
+                                               {% endif %} readonly />
+                                        <span class="form-label"></span>
                                     </div>
                                 </div>
                             </div>
