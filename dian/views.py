@@ -20,7 +20,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-from telusko.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
+from diantours.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
 # Create your views here.
 
 def index(request):

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TravelloConfig(AppConfig):
-    name = 'travello'
+class DianConfig(AppConfig):
+    name = 'dian'
     verbose_name='diantours'

@@ -21,7 +21,7 @@ from django.urls.conf import re_path
 from django.views.static import serve
 
 urlpatterns = [
-    path('', include('travello.urls')),
+    path('', include('dian.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('dashboard/', include('dashboard.urls')),

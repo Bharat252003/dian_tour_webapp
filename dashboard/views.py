@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 # from .forms import myform
-from travello.models import Packages
+from dian.models import Packages
 # from accounts.models import User
 # Create your views here.
 @login_required(login_url='login')

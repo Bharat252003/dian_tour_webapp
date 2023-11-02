@@ -1,7 +1,7 @@
 from django.urls import path, include
 from . import views
 from accounts.views import logout
-from travello.views import CancelorderHistory,orderHistory
+from dian.views import CancelorderHistory,orderHistory
 urlpatterns = [
     path('',views.dashboard,name='dashboard'),
     path('addpkg/',views.add_package,name='addpkg'),
